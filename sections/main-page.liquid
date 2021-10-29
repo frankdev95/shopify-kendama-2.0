@@ -1,0 +1,48 @@
+<link
+  rel="stylesheet"
+  href="{{ 'section-main-page.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+  rel="stylesheet"
+  href="{{ 'component-rte.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+/>
+
+<noscript>{{ "section-main-page.css" | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ "component-rte.css" | asset_url | stylesheet_tag }}</noscript>
+
+<div class="page-width page-width--narrow">
+  <div class="main-page-title">
+    {% if section.settings.show_title %}
+      <h1 class="page-title">{{ page.title }}</h1>
+    {% endif %}
+  </div>
+  <div class="main-page-about">
+    {% if section.settings.show_content %}
+      {{ page.content }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page Settings",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show page title",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show page content",
+      "default": false
+    }
+  ]
+}
+{% endschema %}
