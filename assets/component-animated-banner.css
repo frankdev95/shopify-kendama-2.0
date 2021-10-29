@@ -1,0 +1,27 @@
+@keyframes marquee-left {
+    0% {
+     transform:translateX(0%)
+    }
+    to {
+     transform:translateX(-25%)
+    }
+}
+
+.animated-banner__container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.animated-banner {
+    white-space: nowrap;
+    width: auto;
+}
+
+.animated-banner span {
+    color: black;
+    font-weight: bold;
+    margin-right: 4rem;
+    font-size: 66px;
+    text-transform: uppercase;
+}

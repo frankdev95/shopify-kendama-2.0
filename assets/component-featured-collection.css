@@ -1,0 +1,107 @@
+.overflow-scroll-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.overflow-scroller {
+    position: relative;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.overflow-scroller__container {
+    white-space: nowrap;
+    display: flex;
+}
+
+.overflow-scroller__product {
+    flex-basis: max(30rem, 27%);
+    flex-shrink: 0;
+}
+
+.overflow-scroll-wrap .btn {
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid black;
+    box-shadow: 3px 3px black;
+    cursor: pointer;
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.overflow-scroll-wrap .btn:active {
+    box-shadow: none;
+}
+
+.overflow-scroll-wrap .btn.arrow--left {
+    left: 1rem;
+}
+
+.overflow-scroll-wrap .btn.arrow--right {
+    right: 1rem;
+}
+
+.overflow-scroller__scatter .overflow-scroller__product:nth-of-type(2n + 1) {
+    position: relative;
+    bottom: 30px;
+}
+
+.overflow-scroller__product {
+    padding-left: 40px;
+}
+
+.overflow-scroller__product:first-child {
+    margin-left: 30px;
+}
+
+.overflow-scroller__product-link {
+    text-decoration: none;
+}
+
+.overflow-scroller__product-content {
+    text-align: center;
+    white-space: normal;
+
+}
+
+.overflow-scroller__product-link {
+    text-decoration: none;
+}
+
+.overflow-scroller__product-title,
+.overflow-scroller__product-price{
+    text-decoration: none;
+}
+
+.overflow-scroller__product-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+
+.product-slider {
+    /* height: 500px; */
+}
+
+.product-slide img {
+    max-width: 100%;
+    width: 100%;
+    height: max(30rem, calc(100vw / 100 * 27));
+    object-fit: contain;
+}
+
+
+.overflow-scroller[data-product-image-scatter="true"] .overflow-scroller__product:nth-child(2n) {
+    padding-top: 30px;
+}
+
+.overflow-scroller[data-type-product-capitalize="true"] .grid-product__title {
+    text-transform: uppercase;
+}

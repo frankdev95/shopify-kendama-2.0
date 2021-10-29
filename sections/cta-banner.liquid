@@ -1,0 +1,71 @@
+{{ 'component-cta.css' | asset_url | stylesheet_tag}}
+
+
+{%- assign image_size = section.settings.image_size | divided_by: 10.0 | append: 'rem' -%}
+{%- assign margin_vertical = section.settings.margin_vertical | divided_by: 10.0 | append: 'rem' -%}
+
+<div class="kenkredits" style="{% if section.settings.background %} background-color: {{ section.settings.background }}; {% endif %} margin-top: {{ margin_vertical }}; margin-bottom: {{ margin_vertical }};">
+    {% if section.settings.icon %}
+        <img src="{{ section.settings.icon | img_url: 'medium' }}" alt="icon" style="width: {{ image_size }}; height: {{ image_size }}">
+    {% endif %}
+    <h1 style="{% if section.settings.background %} color: {{ section.settings.text_color }}; {% endif %}">{{ section.settings.title }}</h1>
+    {% if section.settings.icon %}
+        <img src="{{ section.settings.icon | img_url: 'medium' }}" alt="icon" style="width: {{ image_size }}; height: {{ image_size }}">
+    {% endif %}
+</div>
+
+{% schema %}
+{
+    "name": "CTA Banner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "CTA Banner"
+        },
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+        },
+        {
+            "type": "range",
+            "id": "image_size",
+            "label": "Image size",
+            "min": 20,
+            "max": 250,
+            "step": 10,
+            "default": 50,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "margin_vertical",
+            "label": "Vertical spacing",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background color",
+            "default": "#ba2b20"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#fff"
+        }
+    ],
+    "presets": [
+        {
+            "name": "CTA Banner"
+        }
+    ]
+}
+{% endschema %}

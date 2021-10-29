@@ -1,0 +1,142 @@
+.product-box {
+  --border-width: 5px;
+
+  background-color: #fff;
+  position: absolute;
+  width: max(30rem, 50%);
+  height: max(25rem, 18vw);
+  right: 0%;
+  top: 5%;
+}
+
+.product-box__top {
+  border: var(--border-width) solid var(--primary-red);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-box__link {
+  display: inline-block;
+  width: inherit;
+  height: 100%;
+  transition: left .3s ease-in-out;
+}
+
+.product-box__link.relative {
+  position: relative;
+}
+
+.product-box__link.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.product-box__image {
+  width: inherit;
+  height: inherit;
+}
+
+.product-box__image img,
+.product-box__image--placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-box__bottom {
+  border-bottom: var(--border-width) solid var(--primary-red);
+  /* border-left: calc(var(--border-width) / 2) solid var(--primary-red);
+  border-right: calc(var(--border-width) / 2) solid var(--primary-red); */
+  display: flex;
+  height: 15rem;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-box__thumbnail {
+  box-sizing: border-box;
+  border-left: var(--border-width) solid var(--primary-red);
+  cursor: pointer;
+  min-width: 25%;
+  max-width: 25%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  transition: all .3s;
+
+}
+
+.product-box__thumbnail img,
+.product-box__thumbnail svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-box__arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.product-box__arrows .arrow {
+  position: absolute;
+  cursor: pointer;
+  width: 3rem;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.product-box__arrows .arrow-left {
+  transform: translateY(-50%) rotate(180deg);
+  left: 1.5rem;
+}
+
+.product-box__arrows .arrow-right {
+  right: 1.5rem;
+}
+
+.product-box__thumbnail.active::after {
+  animation: scaleAppear .2s ease-in-out forwards;
+  background-color: #787A91;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+  z-index: 1;
+  transition: left .3s ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes scaleAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: .4;
+    transform: scale(1);
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .product-box {
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
+    width: 35rem;
+  }
+}

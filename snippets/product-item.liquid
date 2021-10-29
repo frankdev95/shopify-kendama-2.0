@@ -1,0 +1,33 @@
+<div class="card__wrapper">
+    <a href="{{ product.url | default: '#'}}" class="card__link">
+        <div class="card__product {% if product.featured_media == nil%} card--no--media {% endif %}">
+            <div class="card__media">
+                <img src="{{ product.featured_media | img_url: 'large' }}" alt="{{ product.featured_media.alt | escape }}">
+            </div>
+        </div>
+        <div class="card__bottom">
+            <div class="card__information">
+                <div class="card__information-wrapper">
+                    <h3 class="product__title">{{ product.title | escape }}</h3>
+                    <span class="product__price">{{ product.price | money_with_currency}}</span>
+                </div>
+            </div>
+            <div class="card__add-to-cart">
+                <product-form class="kendama-product-form">
+                    {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <div class="kendama-product-form__buttons">
+                            <button type="submit" name="add" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                                {% if product.selected_or_first_available_variant.available %}
+                                    {{ 'products.product.add_to_cart' | t }}
+                                {% else %}
+                                    {{ 'products.product.sold_out' | t }}
+                                {% endif %}
+                            </button>
+                        </div>
+                    {%- endform -%}
+                </product-form>
+            </div>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,179 @@
+{{ 'component-multicolumn-image-with-text.css' | asset_url | stylesheet_tag}}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="margin-vertical-lg">
+    <div class="page-width">
+        <div class="multicolumn-image__container">
+            <h2 class="margin-vertical-md bold h1 center">{{ section.settings.heading }}</h2>
+            <slider-component>
+                <ul class="multicolumn-image__columns {% if section.blocks.size > 3 %} grid--4-columns {% endif %} {% if section.settings.swipe_on_mobile and section.blocks.size > 1 %} slider slider--mobile grid--peek{% endif %} %">
+                    {% for block in section.blocks %}
+                        {% case block.type %}
+                            {% when "column" %}
+                            <div class="multicolumn-image__column">
+                                <a class="multicolumn-image__column-inner {% if section.settings.swipe_on_mobile %} slider__slide{% endif %}" {% if block.settings.image_link != blank %} href="{{ block.settings.image_link }}" {% endif %}>
+                                    {% if block.settings.image != blank %}
+                                        {%- assign image_size = block.settings.image_size | append: '%' -%}
+                                        <div class="multicolumn-image__image multicolumn-image__image--{{ block.settings.height }}" style="width: {{ image_size }}" >
+                                            <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                                src="{{ block.settings.image | img_url: '553x' }}" 
+                                                alt="{{ block.settings.collection.title | escape }}"
+                                                height="{{ block.settings.image.height }}"
+                                                width="{{ block.settings.image.width }}"
+                                                loading="lazy"
+                                                class="image {{ block.settings.object_fit }}"
+                                            >
+                                        </div>
+                                    {% else %}
+                                        {% assign object_fit = block.settings.object_fit %}
+                                        {% style %}
+                                            .multicolumn-image__image--{{ forloop.index }} svg {
+                                                object-fit: {{ object_fit }};
+                                            }
+                                        {% endstyle %}
+                                        <div class="multicolumn-image__image--{{ forloop.index }} multicolumn-image__image--{{ block.settings.height }}" style="width: {{ image_size }}" >
+                                            {{ 'image' | placeholder_svg_tag: 'image-placeholder image' }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="multicolumn-image__content center">
+                                        <h2 class="h2 margin-vertical-sm">{{ block.settings.heading }}</h2>
+                                        {% if block.settings.text != blank %}
+                                            {{ block.settings.text }}
+                                        {% endif %}
+                                    </div>   
+                                </a>
+                            </div>
+                        {% endcase %}
+                    {% endfor %}
+                </ul>
+
+                {%- if section.settings.swipe_on_mobile -%}
+                    <div class="slider-buttons no-js-hidden medium-hide{% if section.blocks.size < 2 %} small-hide{% endif %}">
+                    <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+                    <div class="slider-counter caption">
+                        <span class="slider-counter--current">1</span>
+                        <span aria-hidden="true"> / </span>
+                        <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+                        <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                    </div>
+                    <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+                    </div>
+                {%- endif -%}
+            </slider-component>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Multicolumn image text",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "swipe_on_mobile",
+            "label": "Swipe on mobile",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Column",
+            "type": "column",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "default": "Image with text",
+                    "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+                    "label": "t:sections.image-with-text.blocks.text.settings.text.label"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "range",
+                    "id": "image_size",
+                    "label": "Image size",
+                    "min": 5,
+                    "max": 100,
+                    "step": 5,
+                    "default": 60,
+                    "unit": "%"
+                },
+                {
+                    "type": "url",
+                    "id": "image_link",
+                    "label": "Image link"
+                },
+                {
+                    "type": "select",
+                    "id": "object_fit",
+                    "label": "Image fit",
+                    "options": [
+                        {
+                            "value": "contain",
+                            "label": "Contain"
+                        },
+                        {
+                            "value": "cover",
+                            "label": "Cover"
+                        }
+                    ],
+                    "default": "cover"
+                },
+                {
+                    "type": "select",
+                    "id": "height",
+                    "options": [
+                      {
+                        "value": "adapt",
+                        "label": "t:sections.image-with-text.settings.height.options__1.label"
+                      },
+                      {
+                        "value": "small",
+                        "label": "t:sections.image-with-text.settings.height.options__2.label"
+                      },
+                      {
+                        "value": "large",
+                        "label": "t:sections.image-with-text.settings.height.options__3.label"
+                      }
+                    ],
+                    "default": "small",
+                    "label": "t:sections.image-with-text.settings.height.label"
+                  }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Multicolumn image",
+            "blocks": [
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

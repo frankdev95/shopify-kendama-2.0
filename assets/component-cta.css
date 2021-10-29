@@ -1,0 +1,46 @@
+.kenkredits {
+  background-color: #ba2b20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kenkredits h1 {
+  color: white;
+  font-weight: 900;
+  font-size: 3.5vw;
+  margin: 0 2rem;
+  text-transform: uppercase;
+}
+
+.kenkredits img {
+  width: 6rem;
+}
+
+@media only screen and (max-width: 75em) {
+  .kenkredits h1 {
+    /* font-size: 4.25rem; */
+    margin: 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  .kenkredits h1 {
+    /* font-size: 3.75rem; */
+    margin: 0 .25rem;
+  }
+}
+
+@media only screen and (max-width: 43.75em) {
+  .kenkredits h1 {
+    /* font-size: 3.25rem; */
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .kenkredits h1 {
+    /* font-size: 3rem; */
+    margin: 0;
+  }
+}

@@ -1,0 +1,120 @@
+{{ 'component-image-slideshow.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'image-slideshow.js' | asset_url }}" defer="defer"></script>
+
+<section class="margin-vertical-lg">
+    <image-slideshow>
+        <div class="image-slideshow">
+            <div class="image-slideshow__container">
+                <div class="image-slideshow__wrapper" aria-label="slideshow" aria-describedby="slideshow-info" data-slide-speed={{ section.settings.slide_speed }} data-indicator-amount={{ section.settings.max_indicators }}>
+                    {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+                            {%- when 'slide' -%}
+                                {%- if block.settings.image -%}
+                                    <div class="slide image-slideshow__slide {% if forloop.index == 1 %}show{% endif %}">
+                                        <a class="image-slideshow__img-container" href="{{ block.settings.image_link }}">
+                                            <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                                src="{{ block.settings.collection.image | img_url: '553x' }}"
+                                                alt="{{ block.settings.collection.title | escape }}"
+                                                height="{{ block.settings.image.height }}"
+                                                width="{{ block.settings.image.width }}"
+                                                loading="lazy"
+                                                class="motion-reduce lazy-load"
+                                            >
+                                        </a>
+                                    </div>
+                                {%- elsif block.settings.image == blank -%}
+                                    <div class="slide image-slideshow__placeholder-slide" data-index={{ forloop.index | minus: 1 }}>
+                                        {{ 'image' | placeholder_svg_tag: 'image__placeholder' }}
+                                    </div>
+                                {%- endif -%}
+                            {%- else -%}
+                        {%- endcase -%}
+                    {%- endfor -%}
+                </div>
+                {%- if section.blocks.size > 1 -%}
+                    <div class="image-slideshow__controls">
+                        <div class="image-slideshow__indicators-wrapper">
+                                <i class="arrow fas fa-chevron-left" role="button" data-name="previous"></i>
+                                <ul class="image-slideshow__indicators">
+                                    {%- for block in section.blocks -%}
+                                        <li class="image-slideshow__indicator {% if forloop.index == 1 %}active{% endif %}" data-index={{ forloop.index | minus: 1 }}></li>
+                                    {%- endfor -%}
+                                </ul>
+                                <i class="arrow fas fa-chevron-right" role="button" data-name="next" ></i>
+                        </div>
+                        <div class="image-slideshow__player-wrapper">
+                            <i class="play-btn control-btn fas fa-play hide" role="button"></i>
+                            <i class="pause-btn control-btn fas fa-pause" role="button"></i>
+                        </div>
+                    </div>  
+                {%- endif -%}
+              
+            </div>
+        </div>
+    </image-slideshow>
+</section>
+
+{% schema %}
+{
+    "name": "Image slideshow",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "slide_speed",
+            "label": "Slide Speed",
+            "info": "Control the speed of the slideshow",
+            "min": 0.5,
+            "max": 5,
+            "step": 0.5,
+            "default": 2,
+            "unit": "sec"
+        },
+        {
+            "type": "range",
+            "id": "max_indicators",
+            "label": "Maximum indicators shown",
+            "info": "Control the amount of indicators to show",
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "default": 4
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Featured image"
+                },
+                {
+                    "type": "url",
+                    "id": "image_link",
+                    "label": "Image link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image slideshow",
+            "blocks": [
+                {
+                    "type": "slide"
+                }
+            ]
+        }
+    ]
+
+}
+{% endschema %}

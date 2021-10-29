@@ -1,0 +1,47 @@
+{{ 'component-animated-banner.css' | asset_url | stylesheet_tag}}
+
+<section class="margin-vertical-lg">
+    <animated-banner>
+        <div class="animated-banner__container">
+            <div class="animated-banner">
+                <span>{{ section.settings.banner_text }}</span>
+                <span>{{ section.settings.banner_text }}</span>
+                <span>{{ section.settings.banner_text }}</span>
+                <!-- <span>{{ section.settings.banner_text }}</span> -->
+            </div>
+        </div>
+    </animated-banner>
+</section>
+
+{% javascript %}
+    class AnimatedBanner extends HTMLElement {
+        constructor() {
+            super();
+
+            this.bannerTextElements = this.querySelector('.animated-banner span');
+        }
+
+        move() {
+            
+        }
+    }
+{% endjavascript %}
+
+{% schema %}
+{
+    "name": "Animated banner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "banner_text",
+            "label": "Banner text",
+            "default": "Featured Products"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Animated banner"
+        }
+    ]
+}
+{% endschema %} 

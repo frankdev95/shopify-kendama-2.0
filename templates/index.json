@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "image_slideshow": {
+      "type": "image-slideshow",
+      "settings": {
+        "desktop_text_box_position": "flex-end"
+      },
+      "blocks": {
+      },
+      "block_order": [
+      ]
+    }
+  },
+  "order": [
+    "image_slideshow"
+  ]
+}
