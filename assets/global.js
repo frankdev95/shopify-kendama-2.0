@@ -403,7 +403,7 @@ class SliderComponent extends HTMLElement {
   constructor() {
     super();
     this.slider = this.querySelector('ul');
-    this.sliderItems = this.querySelectorAll('.multicolumn-image__column');
+    this.sliderItems = this.querySelectorAll('li');
     this.pageCount = this.querySelector('.slider-counter--current'); // get current slide - always starts at one
     this.pageTotal = this.querySelector('.slider-counter--total'); // get slide amount
     this.prevButton = this.querySelector('button[name="previous"]');
@@ -414,6 +414,12 @@ class SliderComponent extends HTMLElement {
     const resizeObserver = new ResizeObserver(entries => this.initPages());
     resizeObserver.observe(this.slider);
 
+    this.isAutomated = this.dataset.automated;
+    this.automationSpeed = +this.dataset.slideSpeed * 1000;
+    this.currentDirection = 'next';
+
+    if(this.isAutomated === 'true') this.automationInterval = setInterval(this.automate.bind(this), this.automationSpeed);
+    
     this.slider.addEventListener('scroll', this.update.bind(this));
     this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
@@ -422,26 +428,31 @@ class SliderComponent extends HTMLElement {
   initPages() {
     if (!this.sliderItems.length === 0) return;
 
-    this.slidesPerPage = Math.floor(this.slider.clientWidth / this.sliderItems[0].clientWidth);
-    this.totalPages = this.sliderItems.length - this.slidesPerPage + 1;
+    this.slidesPerPage = Math.floor(this.slider.getBoundingClientRect().width / this.sliderItems[0].getBoundingClientRect().width);
+    this.totalPages = this.sliderItems.length;
+
+    if(this.slidesPerPage > 1) {
+      const currentSlide = this.currentPage - this.slidesPerPage;
+      this.slider.scrollLeft = parseFloat(this.sliderItems[0].getBoundingClientRect().width * currentSlide);
+    }
+  
+    if(this.isAutomated === 'true') {
+      clearInterval(this.automationInterval);
+      this.restartAutomationHandler();
+    }
+
     this.update();
+  }
+
+  get currentPage() {
+    return  Math.round(this.slider.scrollLeft / this.sliderItems[0].getBoundingClientRect().width) + this.slidesPerPage;
   }
 
   update() {
     if (!this.pageCount || !this.pageTotal) return;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItems[0].clientWidth) + 1;
-
-    if (this.currentPage === 1) {
-      this.prevButton.setAttribute('disabled', true);
-    } else {
-      this.prevButton.removeAttribute('disabled');
-    }
-
-    if (this.currentPage === this.totalPages) {
-      this.nextButton.setAttribute('disabled', true);
-    } else {
-      this.nextButton.removeAttribute('disabled');
-    }
+    
+    this.currentPage === this.slidesPerPage ? this.prevButton.setAttribute('disabled', true) : this.prevButton.removeAttribute('disabled');
+    this.currentPage === this.totalPages ? this.nextButton.setAttribute('disabled', true) : this.nextButton.removeAttribute('disabled');
 
     this.pageCount.textContent = this.currentPage;
     this.pageTotal.textContent = this.totalPages;
@@ -449,12 +460,81 @@ class SliderComponent extends HTMLElement {
 
   onButtonClick(event) {
     event.preventDefault();
-    const slideScrollPosition = event.currentTarget.name === 'next' ? this.slider.scrollLeft + this.sliderItems[0].clientWidth : this.slider.scrollLeft - this.sliderItems[0].clientWidth;
+
+    if(this.isAutomated === 'true') {
+      clearInterval(this.automationInterval);
+      this.restartAutomationHandler()
+    };
+
+    this.moveSlide(event);
+  }
+
+  moveSlide(event, dir = null) {
+    const direction = dir ? dir : event.currentTarget.name;
+    const slideScrollPosition = direction === 'next' ? parseFloat(this.slider.scrollLeft + this.sliderItems[0].getBoundingClientRect().width) : parseFloat(this.slider.scrollLeft - this.sliderItems[0].getBoundingClientRect().width);
     this.slider.scrollTo({
       left: slideScrollPosition
     });
-
   }
+
+  automate() {
+    if(this.currentPage === this.slidesPerPage) this.currentDirection = 'next'
+    if(this.currentPage === this.totalPages) this.currentDirection = 'previous';    
+    this.moveSlide(null, this.currentDirection);
+  }
+
+  restartAutomationHandler = debounce(() => {
+    this.automationInterval = setInterval(this.automate.bind(this), this.automationSpeed);
+  }, 3000)
 }
 
 customElements.define('slider-component', SliderComponent);
+
+
+class Modal extends HTMLElement {
+  constructor() {
+    super();
+    this.modalOpenButton = document.querySelector(`button[data-modal='${this.id}']`);
+    this.modalCloseButton = this.querySelector('.modal__close');
+    this.bindEvents();
+
+    this.addEventListener('keyup', this.onKeyUp.bind(this));
+    this.addEventListener('focusout', this.onFocusOut.bind(this));
+  }
+
+  bindEvents() {
+    this.modalOpenButton.addEventListener('click', this.openModal.bind(this));
+    this.modalCloseButton.addEventListener('click', this.closeModal.bind(this));
+  }
+
+  openModal() {
+    this.setAccessibility(true);
+    trapFocus(this, this.modalCloseButton);
+
+  }
+
+  closeModal() {
+    this.setAccessibility(false);
+    removeTrapFocus(this.modalOpenButton);
+  }
+
+  setAccessibility(isOpen) {
+    this.setAttribute('open', `${isOpen}`);
+    this.modalOpenButton.setAttribute('aria-expanded', `${isOpen}`);
+    this.setAttribute('aria-hidden', `${!isOpen}`);
+    this.modalCloseButton.setAttribute('aria-hidden', `${!isOpen}`);
+  }
+
+  onKeyUp(e) {
+    if(e.code.toUpperCase() !== 'ESCAPE') return;
+    this.closeModal();
+  }
+
+  onFocusOut(e) {
+    setTimeout(() => {
+      if (!!this.getAttribute('open') && !this.contains(document.activeElement)) this.closeModal();
+    });
+  }
+}
+
+customElements.define('modal-component', Modal);

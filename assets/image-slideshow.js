@@ -9,13 +9,13 @@ class ImageSlideshow extends HTMLElement {
         this.playButton = this.querySelector('.play-btn');
         this.pauseButton = this.querySelector('.pause-btn');
 
-        const resizeObserver = new ResizeObserver(entries => this.controlElementHeight());
-        resizeObserver.observe(this.slider);
-
         this.sliderItems[0].classList.add('show');
 
         if(!this.slider || !this.nextButton || !this.sliderItems.length > 1) return
         
+        this.restartSlideShowHandler = debounce(() => {
+            this.restartInterval = setTimeout(this.startSlideshow.bind(this), 3000);
+        }, 3000)
 
         this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
         this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
@@ -36,10 +36,6 @@ class ImageSlideshow extends HTMLElement {
         });
     }
 
-    controlElementHeight() {
-        const sliderHeight = window.innerWidth / 2 - (window.innerHeight / 10);
-        this.slider.style.height = `${sliderHeight}px`;
-    }
 
     init() {
         this.currentSlide = 0;
@@ -47,7 +43,6 @@ class ImageSlideshow extends HTMLElement {
 
         this.sliderItems[this.currentSlide].setAttribute('aria-hidden', 'false');
 
-        this.stopSlideShow();
         this.startSlideshow();
     }
 
@@ -67,7 +62,7 @@ class ImageSlideshow extends HTMLElement {
     }
 
     onButtonClick(e) {
-        this.restartSlideshow();
+        if(!this.isStopped) this.restartSlideshow();
 
         const directionToMove = e.currentTarget.dataset.name === 'previous' ? -1 : 1;
         const nextSlide = this.currentSlide + directionToMove;
@@ -83,6 +78,7 @@ class ImageSlideshow extends HTMLElement {
     }
 
     handleSlideMovement(nextSlide) {
+        console.log(nextSlide);
         if (nextSlide === this.sliderItems.length) {
             this.moveSlide(0);
         } else if(nextSlide === -1) {
@@ -109,13 +105,12 @@ class ImageSlideshow extends HTMLElement {
 
     restartSlideshow() {
         this.stopSlideShow();
-        clearTimeout(this.restartInterval);
-        this.restartInterval = setTimeout(this.startSlideshow.bind(this), 3000);
+        this.restartSlideShowHandler();
     }
 
     stopSlideShow() {
+        this.isStopped = true;
         clearInterval(this.slideshowInterval);
-        this.slideshowInterval = null;
     }
 
     startSlideshow() {

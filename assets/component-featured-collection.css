@@ -63,6 +63,7 @@
 
 .overflow-scroller__product-link {
     text-decoration: none;
+    color: rgb(var(--color-link));
 }
 
 .overflow-scroller__product-content {
@@ -71,24 +72,11 @@
 
 }
 
-.overflow-scroller__product-link {
-    text-decoration: none;
-}
-
-.overflow-scroller__product-title,
-.overflow-scroller__product-price{
-    text-decoration: none;
-}
-
 .overflow-scroller__product-title {
     font-weight: bold;
     font-size: 1.6rem;
 }
 
-
-.product-slider {
-    /* height: 500px; */
-}
 
 .product-slide img {
     max-width: 100%;

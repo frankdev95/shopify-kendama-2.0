@@ -1,0 +1,334 @@
+{{ 'component-gallery.css' | asset_url | stylesheet_tag }}
+{{ 'modal.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="gallery margin-vertical-xxl">
+    <div class="{% if section.settings.full_width == false %} page-width{%endif%}">
+        <slider-component>
+            {%- assign grid_gap = section.settings.grid_gap | divided_by: 10.0 | append: 'rem' -%}
+            <ul class="gallery__container {{ section.settings.layout }} {% if section.blocks.size < 4 %} col-3 {% endif %} {% if section.blocks.size < 3 %} col-2{% endif %}{% if section.settings.swipe_on_mobile and section.blocks.size > 1 %} slider slider--mobile grid--peek{% endif %}">
+                {% style %} 
+                    .gallery__container {
+                        gap: {{ grid_gap }};
+                    }
+
+                    .gallery__item,
+                    .gallery__figcaption-heading,
+                    .gallery__figcaption svg {
+                        color: {{ section.settings.text_color }};
+                    }
+
+                    .gallery__figcaption {
+                        background: rgba({{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }}, {{ section.settings.opacity }});
+                    }
+
+                    .gallery__figure button.modal__toggle-no-fig {
+                        background: rgba({{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }}, 0.3);
+                    }
+                    
+                    
+                {% endstyle %}
+                {% for block in section.blocks %}
+                    {% assign image_height = section.settings.height | divided_by: 10.0 | append: 'rem' %}
+                    <li id="gallery__item--{{ forloop.index }}" class="gallery__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}" style="height: {{ image_height }};">
+                        {% style %} 
+                            {% if block.settings.link != blank %}
+                                #gallery__item--{{ forloop.index }} {
+                                    cursor: pointer;
+                                }
+                            {% endif %}
+                            
+                            {% if block.settings.show_overlay == false %}
+                                #gallery__figcaption--{{ forloop.index }} {
+                                    display: none;
+                                }
+                            {% else %}
+                                #gallery__figcaption--{{ forloop.index }} {
+                                    pointer-events: none;
+                                }
+                            {% endif %}
+                        {% endstyle %}
+                        {% case block.type %}
+                            {% when 'image' %}
+                                <figure class="gallery__figure">
+                                    {% if block.settings.image != blank %}
+                                        <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                            src="{{ block.settings.image | img_url: '553x' }}" 
+                                            alt="{{ block.settings.collection.title | escape }}"
+                                            height="{{ block.settings.image.height }}"
+                                            width="{{ block.settings.image.width }}"
+                                            loading="lazy"
+                                            class="image {{ block.settings.object_fit }}"
+                                        >
+                                    {% else %}
+                                        {{ 'image' | placeholder_svg_tag: 'image' }}
+                                    {% endif %}
+                                    {% if block.settings.text != blank %}
+                                        <figcaption class="gallery__figcaption hover-disable{% if block.settings.show_modal %} gallery__figcaption--modal {% endif %}" {% if block.settings.show_overlay == false %} aria-hidden="true" {% endif %}>
+                                            {{ block.settings.text }}
+                                            {% if block.settings.show_modal %}
+                                                <button type="button" data-modal="gallery__modal--{{ forloop.index }}" aria-controls="gallery__modal--{{ forloop.index }}" aria-expanded="false" aria-haspopup="dialog">
+                                                    {% render 'icon-expand' %}
+                                                </button>
+                                            {% endif %}
+                                        </figcaption>  
+                                    {% else %}
+                                        {% if block.settings.show_modal %}
+                                            <button class="modal__toggle-no-fig" type="button" data-modal="gallery__modal--{{ forloop.index }}" aria-controls="gallery__modal--{{ forloop.index }}" aria-expanded="false" aria-haspopup="dialog">
+                                                {% render 'icon-expand' %}
+                                            </button>
+                                        {% endif %} 
+                                    {% endif %} 
+                                </figure>
+                                {% if block.settings.show_modal %}
+                                <modal-component id="gallery__modal--{{ forloop.index }}" class="modal__container" data-hover-disable="true" aria-hidden="true">
+                                    <button type="button" class="modal__close" aria-label="close" aria-hidden="true">
+                                        {% render 'icon-close' %}
+                                    </button>
+                                    <div class="modal__backdrop"></div>
+                                    <div class="modal__outer" role="dialog" aria-modal="true" aria-label="Media gallery">
+                                        <div class="modal__inner">
+                                            {% if block.settings.image != blank %}
+                                                <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                                {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                                src="{{ block.settings.image | img_url: '553x' }}" 
+                                                alt="{{ block.settings.collection.title | escape }}"
+                                                height="{{ block.settings.image.height }}"
+                                                width="{{ block.settings.image.width }}"
+                                                loading="lazy"
+                                                class="image {{ block.settings.object_fit }}"
+                                            >
+                                            {% else %}
+                                                {{ 'image' | placeholder_svg_tag: 'image' }}
+                                            {% endif %}
+                                           
+                                        </div>
+                                    </div>
+                                </modal-component>    
+                                {% endif %}
+                            {% when 'video' %}
+                                <div></div>
+                        {% endcase %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {%- if section.settings.swipe_on_mobile -%}
+                    <div class="slider-buttons no-js-hidden medium-hide{% if section.blocks.size < 2 %} small-hide{% endif %}">
+                    <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+                    <div class="slider-counter caption">
+                        <span class="slider-counter--current">1</span>
+                        <span aria-hidden="true"> / </span>
+                        <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+                        <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                    </div>
+                    <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+                    </div>
+                {%- endif -%}
+        </slider-component>
+
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Multimedia Gallery",
+    "settings" : [
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Grid layout",
+            "options": [
+                {
+                    "value": "col-2",
+                    "label": "Two columns"
+                }, 
+                {
+                    "value": "col-3",
+                    "label": "Three columns"
+                },
+                {
+                    "value": "col-4",
+                    "label": "Four columns"
+                },
+                {
+                    "value": "grid-layout-one",
+                    "label": "Grid layout one"
+                },
+                {
+                    "value": "grid-layout-two",
+                    "label": "Grid layout two"
+                },
+                {
+                    "value": "grid-layout-three",
+                    "label": "Grid layout three"
+                }
+            ],
+            "default": "col-4"
+        },
+        {
+            "type": "range",
+            "id": "grid_gap",
+            "label": "Grid gap",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "unit": "px"
+        },
+        {
+            "type": "checkbox",
+            "id": "full_width",
+            "label": "Full width",
+            "info": "Enable gallery to stretch to full width of page",
+            "default": true
+        },
+        {
+            "type": "range",
+            "id": "height",
+            "label": "Image height",
+            "min": 100,
+            "max": 500,
+            "step": 25,
+            "unit": "px",
+            "default": 350
+        },
+        {
+            "type": "header",
+            "content": "Overlay styling",
+            "info" : "Control the styling of the overlay on hover if present"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Overlay text color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Overlay background color",
+            "default": "#889EAF"
+        },
+        {
+            "type": "range",
+            "id": "opacity",
+            "label": "Overlay background opacity",
+            "default": 0.8,
+            "min": 0,
+            "max": 1,
+            "step": 0.1
+        },
+        {
+            "type": "checkbox",
+            "id": "swipe_on_mobile",
+            "default": true,
+            "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+          }
+    ],
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_modal",
+                    "label": "Show modal on click",
+                    "default": true
+                },
+                {
+                    "type": "select",
+                    "id": "object_fit",
+                    "label": "Image fit",
+                    "options": [
+                        {
+                            "value": "contain",
+                            "label": "Contain"
+                        },
+                        {
+                            "value": "cover",
+                            "label": "Cover"
+                        }
+                    ],
+                    "default": "cover"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_overlay",
+                    "label": "Show overlay",
+                    "default": true
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Overlay text",
+                    "default": "<p>Add a caption to an image to explain and ellaborate on your choosen image.</p>"
+                }
+            ]
+        },
+        {
+            "name": "Video",
+            "type": "video",
+            "settings": [
+                {
+                    "type": "video_url",
+                    "id": "video",
+                    "label": "Video",
+                    "accept": [
+                        "youtube",
+                        "vimeo"
+                    ]
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Multimedia gallery",
+            "blocks": [
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                },
+                {
+                    "type": "image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

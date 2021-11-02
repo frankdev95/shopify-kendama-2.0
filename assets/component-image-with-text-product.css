@@ -6,7 +6,7 @@
     flex-basis: 50%;
 }
 
-.image-with-text__container--reverse .image-with-text__col-1 {
+.image-with-text__container.reverse .image-with-text__col-1 {
     order: 1;
 }
 
@@ -37,6 +37,7 @@
 
 .image-with-text__image.circle img {
     border-radius: 50%;
+    height: auto;
 }
 
 .image-with-text__image img,

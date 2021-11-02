@@ -14,6 +14,8 @@
 }
 
 .animated-banner {
+    animation: marquee-left 4s linear infinite forwards;
+    /* animation-duration: 4s; */
     white-space: nowrap;
     width: auto;
 }

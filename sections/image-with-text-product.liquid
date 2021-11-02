@@ -1,33 +1,28 @@
 {{ 'component-image-with-text-product.css' | asset_url | stylesheet_tag}}
 {{ 'component-product-box-slide.css' | asset_url | stylesheet_tag}}
 
+{% liquid 
+    assign image_width = section.settings.image_width | append: '%'    
+    assign image_height = section.settings.image_height | divided_by: 10 | append: 'rem'
+    if section.settings.image_shape == "circle"
+        assign image_height = image_width 
+    endif
+
+    if section.settings.box_shadow_type == "one" and section.settings.show_box_shadow == true
+        assign bs_x_position = section.settings.bs_x_position | times: -1 | divided_by: 10 | append: 'rem'
+        assign bs_y_position = section.settings.bs_y_position | times: -1 | divided_by: 10 | append: 'rem'
+    elsif section.settings.box_shadow_type == "two" and section.settings.show_box_shadow == true
+        assign bs_x_position = section.settings.bs_x_position | divided_by: 10  | append: 'rem'
+        assign bs_y_position = section.settings.bs_y_position | divided_by: 10 | append: 'rem'
+    endif
+-%}
+
 <div class="image-with-text margin-vertical-xxl">
     {%- assign col_gap = section.settings.col_gap | divided_by: 10.0 | append: 'rem' -%}
-    <div class="image-with-text__container page-width" style="gap: {{ col_gap }};">
+    <div class="image-with-text__container page-width{% if section.settings.order == 'text_first' %} reverse{% endif %}" style="gap: {{ col_gap }};">
         <div class="image-with-text__col-1 {{ section.settings.image_align }}">
-            <div class="image-with-text__image {% if section.settings.image_shape == "circle" %}circle {% endif %}{% if section.settings.show_product_box %} product-box--active" {% endif %}>
+            <div class="image-with-text__image {% if section.settings.image_shape == "circle" %}circle {% endif %}{% if section.settings.show_product_box %} product-box--active{% endif %}" style="width: {{ image_width }}; height: {{ image_height }};">
                 {%- if section.settings.main_image != blank -%}
-                    {%- liquid 
-                        assign image_width = section.settings.image_width | append: '%'    
-                        assign image_height = section.settings.image_height | divided_by: 10 | append: 'rem'
-                        if section.settings.image_shape == "circle"
-                            assign image_height = image_width 
-                        endif
-
-                        if section.settings.box_shadow_type == "one" and section.settings.show_box_shadow == true
-                            assign bs_x_position = section.settings.bs_x_position | times: -1 | divided_by: 10 | append: 'rem'
-                            assign bs_y_position = section.settings.bs_y_position | times: -1 | divided_by: 10 | append: 'rem'
-                        elsif section.settings.box_shadow_type == "two" and section.settings.show_box_shadow == true
-                            assign bs_x_position = section.settings.bs_x_position | divided_by: 10  | append: 'rem'
-                            assign bs_y_position = section.settings.bs_y_position | divided_by: 10 | append: 'rem'
-                        endif
-                    -%}
-                    {% style %}
-                        .image-with-text__image {
-                            width: {{ image_width }};
-                            height: {{ image_height }};
-                        }
-                    {% endstyle %}
                     <img srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
                         {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: '360x' }} 360w,{%- endif -%}
                         {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: '535x' }} 535w,{%- endif -%}
@@ -44,12 +39,10 @@
                         alt="{{ section.settings.image.alt | escape }}"
                     >
                 {%- else -%}
-                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {{ 'image' | placeholder_svg_tag: 'image cover' }}
                 {%- endif -%}
             </div>
             {%- if section.settings.show_product_box -%}
-                {%- assign pb_width = section.settings.pb_width | divided_by: 10 | append: 'rem' -%}
-                {%- assign pb_height = section.settings.pb_height | divided_by: 10 | append: 'rem' -%}
                 <product-box class="product-box" data-toggle-automation={{ section.settings.toggle_automation }} data-slide-speed={{ section.settings.slide_speed }}>
                     <div class="product-box__top">
                         {%- assign kendama_products = collections[section.settings.featured_collection].products -%}
@@ -125,7 +118,7 @@
 
                         {{ block.settings.text }}
                     {%- when 'button' -%}
-                        <a class="button margin-vertical-sm" {% if block.settings.button_link != blank %} href="{{ block.settings.button_link }}" {% endif %}>
+                        <a class="button margin-vertical-sm" {% if block.settings.button_link != blank %} href="{{ block.settings.button_link }}" {% endif %} {% if block.settings.button_link == blank %} aria-disabled="true" {% endif %}>
                             {{ block.settings.button_label | escape }}
                         </a>
                 {% endcase %}

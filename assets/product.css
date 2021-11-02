@@ -1,0 +1,166 @@
+.product {
+    display: flex;
+}
+
+.product__container {
+    padding: 0 5.5rem;
+    max-width: 1200px;
+}
+
+.product > * {
+    flex-basis: 100%;
+}
+
+
+.product__media {
+    display: flex;
+    flex-direction: column;
+} 
+
+.product__media img {
+    max-height: 53rem;
+    object-fit: contain;
+}
+
+.media__thumbnails {
+    display: flex;
+}
+
+.media__thumbnails img {
+    flex-basis: 33.3%;
+    height: 20rem;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.product__title {
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+}
+
+.product__description p {
+    font-size: 1.4rem;
+}
+
+.product__text {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+}
+
+.product__title,
+.product__description p {
+    color: rgb(58, 58, 58);
+}
+
+.product__form form{
+    width: auto;
+    max-width: 40rem;
+    min-width: 30rem;
+}
+
+.product-form__input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem 0;
+}
+
+.product-form__input label {
+    font-weight: 300;
+    margin-bottom: .2rem;
+}
+
+.product-form__input select {
+    background-color: transparent;
+    border-radius: 2px;
+    width: max(20rem, 50%);
+    padding: 1rem;
+}
+
+.product-form__input select,
+.product-form__input select:focus,
+.product-form__input select:active {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    outline: none;
+
+}
+
+.product-form__input select:focus,
+.product-form__input select:active {
+    border: 1px solid #2e466b;
+    box-shadow: 0 0 0 1pt #2e466b;
+}
+
+.product__form button {
+    border-radius: 2px;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    padding: 1.5rem 0;
+    margin: .5rem 0;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .15rem;
+}
+
+.product__form button:first-child {
+    background-color: transparent;
+    border: 1px solid black;
+    margin-top: 1rem;
+}
+
+.product__form button:nth-child(2) {
+    background-color: #2e466b;
+}
+
+.share__buttons {
+    margin: 1.5rem 0;
+}
+
+.share-social-buttons {
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.share-button--social {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: .7rem 1.5rem;
+    text-decoration: none;
+    color: currentColor;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.share-button--social svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 750px) {
+    .product {
+        flex-direction: column;
+    }
+
+    .product__container {
+        width: 95%;
+        padding: 0 1rem;
+    }
+
+    .product-form__input select {
+        width: max(20rem, 30%);
+    }
+
+    .product__form form{
+        width: auto;
+        max-width: 45rem;
+    }
+    
+}

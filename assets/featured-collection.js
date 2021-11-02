@@ -11,7 +11,7 @@ class FeaturedCollection extends HTMLElement {
             behavior: 'smooth'
         })
         this.arrowBtns = this.querySelectorAll('.btn');
-        this.gridWidth = this.querySelector('.grid__item').getBoundingClientRect().width;
+        this.gridWidth = this.querySelector('.overflow-scroller__product').getBoundingClientRect().width;
         this.amountToMove = 1;
         this.moveAmount = this.gridWidth * this.amountToMove;
 

@@ -153,11 +153,18 @@ html.no-js .no-js-hidden {
   display: none !important;
 }
 
+.page-width--lg {
+  max-width: 180rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
 .page-width {
   max-width: 160rem;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+
 
 .page-width-desktop {
   padding: 0;
@@ -404,7 +411,7 @@ blockquote {
 }
 
 .caption {
-  font-size: 1rem;
+  font-size: 1.5rem;
   letter-spacing: 0.07rem;
   line-height: 1.7;
 }
@@ -2141,6 +2148,58 @@ details-disclosure > details {
   margin: 0 auto;
 }
 
+/* bottom */
+
+.margin-bottom-xs {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4rem;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 6rem;
+}
+
+.margin-bottom-xl {
+  margin-bottom: 8rem;
+}
+
+.margin-bottom-xxl {
+  margin-bottom: 12re0;
+}
+
+/* top */
+
+.margin-top-xs {
+  margin-top: 1rem;
+}
+
+.margin-top-sm {
+  margin-top: 2rem;
+}
+
+.margin-top-md {
+  margin-top: 4rem;
+}
+
+.margin-top-lg {
+  margin-top: 6rem;
+}
+
+.margin-top-xl {
+  margin-top: 8rem;
+}
+
+.margin-top-xxl {
+  margin-top: 12re0;
+}
+
 /* images */
 
 .image {
@@ -2173,5 +2232,47 @@ details-disclosure > details {
 @media only screen and (max-width: 37.5em) {
   html {
       font-size: 50%; 
+  }
+}
+
+/* Animations */
+
+@keyframes slide {
+  0% {
+      background-position: 0 0;
+  }
+
+  100% {
+      background-position: 20000px 0;
+  }
+}
+
+@keyframes swipeInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeInRight {
+  0% {
+    transform: translateX(100%)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+      transform: scale(0);
+  }
+
+  100% {
+      transform: scale(1);
   }
 }

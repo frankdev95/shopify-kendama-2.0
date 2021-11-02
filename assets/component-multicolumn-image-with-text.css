@@ -6,61 +6,81 @@
 .multicolumn-image__columns {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  list-style: none;
 }
 
 .grid--4-columns .multicolumn-image__column {
-  flex-basis: calc(25%);
+  flex-basis: 25%;
 }
 
 .multicolumn-image__column {
-  flex-basis: calc(33.33%);
+  flex-basis: 33.33%;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.multicolumn-image__column:only-child {
+  max-width: 72rem;
+}
+
+.multicolumn-image__column.center .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width), .multicolumn-image__column:only-child {
+  margin: 0 auto;
+}
+
+.multicolumn-image__column.right .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width), .multicolumn-image__column:only-child {
+  margin-left: auto;
 }
 
 .multicolumn-image__column-inner {
   padding: 0 .5rem;
 }
 
-.multicolumn-image__image {
-  background-color: transparent;
-  min-height: 100%;
-}
-
 .multicolumn-image__content {
-  padding: 0 2rem;
+  padding: 2.5rem;
 }
 
-.multicolumn-image__content h2:empty ~ p {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.multicolumn-image__image-wrapper--half-width {
+  width: 50%;
 }
 
-.multicolumn-image__image--small {
-  height: 19.4rem;
+.multicolumn-image__image-wrapper--third-width {
+  width: 33.33%;
 }
 
-.multicolumn-image__image--large {
-  height: 43.5rem;
+.multicolumn-image__image-wrapper--two-thirds-width {
+  width: 66.66%;
+}
+
+.multicolumn-image__image-wrapper--four-fifths-width {
+  width: 80%;
+}
+
+.multicolumn-card-spacing {
+  margin: 0 2.5rem;
+}
+
+.multicolumn-image__content-heading {
+  margin-bottom: 1rem;
 }
 
 
-
-@media screen and (min-width: 750px) {
-  .multicolumn-image__image--small {
-    height: 31.4rem;
+@media only screen and (max-width: 1200px) {
+  .multicolumn-image__content {
+    padding: 1.5rem;
   }
+}
 
-  .multicolumn-image__image--large {
-    height: 69.5rem;
+@media only screen and (max-width: 991px) {
+  .grid--4-columns .multicolumn-image__column {
+    flex-basis: 50%;
+    max-width: 50%;
   }
 }
 
-@media only screen and (max-width: 749px) {
-  .multicolumn-image__columns {
-    flex-direction: column;
+@media only screen and (max-width: 639px) {
+  .multicolumn-image__content {
+    padding: 2.5rem 3rem;
   }
 
   .multicolumn-image__column {
@@ -68,21 +88,4 @@
     min-width: 100%;
   }
 
-  .multicolumn-image__content p {
-    width: max(80%, 30rem);
-    margin: 0 auto;
-  }
-
-}
-
-@media only screen and (max-width: 1200px) {
-  .multicolumn-image__content {
-    padding: 0 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  .grid--4-columns .multicolumn-image__column {
-    flex-basis: 50%;
-  }
 }

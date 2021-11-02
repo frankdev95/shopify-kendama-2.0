@@ -1630,6 +1630,12 @@
             "label": "Half width of column"
           },
           "options__3": {
+            "label": "Two-thirds width of column"
+          },
+          "options__4": {
+            "label": "Four-fifths width of column"
+          },
+          "options__5": {
             "label": "Full width of column"
           }
         },
@@ -1655,6 +1661,9 @@
           },
           "options__2": {
             "label": "Center"
+          },
+          "options_3": {
+            "label": "Right"
           }
         },
         "background_style": {
