@@ -31,8 +31,8 @@
         "slide_speed": 2,
         "max_indicators": 4,
         "controls_background": "#484747",
-        "controls_indicator_background": "#628395",
-        "controls_active_indicator": "#628395",
+        "controls_indicator_background": "#1eb0ff",
+        "controls_active_indicator": "#bfced6",
         "controls_active_indicator_mobile": "#628395"
       }
     },
