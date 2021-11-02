@@ -3,15 +3,27 @@
     "image_slideshow": {
       "type": "image-slideshow",
       "settings": {
-        "desktop_text_box_position": "flex-end"
-      },
-      "blocks": {
-      },
-      "block_order": [
-      ]
+        "slide_speed": 2,
+        "max_indicators": 4,
+        "controls_background": "#000000",
+        "controls_indicator_background": "#628395",
+        "controls_active_indicator": "#628395",
+        "controls_active_indicator_mobile": "#628395"
+      }
+    },
+    "1635852227dd14b1d6": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading": "Feature Collection",
+        "featured_collection": "",
+        "image_scatter": false,
+        "capitalize": true,
+        "show_banner": true
+      }
     }
   },
   "order": [
-    "image_slideshow"
+    "image_slideshow",
+    "1635852227dd14b1d6"
   ]
 }
