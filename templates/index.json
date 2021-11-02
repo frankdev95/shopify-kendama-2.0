@@ -30,7 +30,7 @@
       "settings": {
         "slide_speed": 2,
         "max_indicators": 4,
-        "controls_background": "#000000",
+        "controls_background": "#ff0000",
         "controls_indicator_background": "#628395",
         "controls_active_indicator": "#628395",
         "controls_active_indicator_mobile": "#628395"
