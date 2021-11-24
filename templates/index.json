@@ -29,7 +29,8 @@
       ],
       "settings": {
         "slide_speed": 2,
-        "max_indicators": 4,
+        "max_indicators": 2,
+        "toggle_automation": false,
         "controls_background": "#d11111",
         "controls_indicator_background": "#1eb0ff",
         "controls_active_indicator": "#bfced6",
@@ -41,6 +42,7 @@
       "settings": {
         "slide_speed": 2,
         "max_indicators": 4,
+        "toggle_automation": false,
         "controls_background": "#000000",
         "controls_indicator_background": "#628395",
         "controls_active_indicator": "#628395",
@@ -51,7 +53,7 @@
       "type": "featured-collection-slider",
       "settings": {
         "heading": "Feature Collection",
-        "featured_collection": "",
+        "featured_collection": "kendama-collection",
         "image_scatter": false,
         "capitalize": true,
         "show_banner": true
