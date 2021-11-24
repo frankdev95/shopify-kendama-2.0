@@ -7,7 +7,25 @@
     position: relative;
     overflow: hidden;
     overflow-x: scroll;
+    padding-bottom: 2rem;
 }
+
+::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #c5b4b4;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
 
 .overflow-scroller__container {
     white-space: nowrap;
@@ -17,6 +35,17 @@
 .overflow-scroller__product {
     flex-basis: max(30rem, 27%);
     flex-shrink: 0;
+}
+
+.overflow-scroller__product:last-child {
+    /* margin-right: 8rem; */
+}
+
+.overflow-scroller__product-slider {
+    cursor: pointer;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
 }
 
 .overflow-scroll-wrap .btn {
@@ -77,14 +106,52 @@
     font-size: 1.6rem;
 }
 
+.product-slider {
+    height: max(30rem, calc(100vw / 100 * 27)); 
+    position: relative;
+}
+
+.product-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.product-slide:not(:only-child) {
+    opacity: 0;
+}
+
+.product-slide.active {
+    opacity: 1;
+}
 
 .product-slide img {
     max-width: 100%;
     width: 100%;
-    height: max(30rem, calc(100vw / 100 * 27));
+    height: 100%;
     object-fit: contain;
 }
 
+.overflow-scroller__product-slider .progress-bar {
+    margin-bottom: .5rem;
+    height: 3px;
+    background-color: transparent;
+    width: 100%;
+    position: relative;
+}
+
+.overflow-scroller__product-slider .progress-amount {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: black;
+}
 
 .overflow-scroller[data-product-image-scatter="true"] .overflow-scroller__product:nth-child(2n) {
     padding-top: 30px;

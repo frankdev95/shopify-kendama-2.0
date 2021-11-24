@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <script src="{{ 'product-filters-form.js' | asset_url}}" defer="defer"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url}}" defer="defer"></script>
 
 {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
 
@@ -75,6 +75,13 @@
                                         </div>
                                         
                                     {% when 'price_range' %}
+                                    {% liquid
+                                        assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                                        assign uses_comma_decimals = false
+                                        if currencies_using_comma_decimals contains cart.currency.iso_code
+                                          assign uses_comma_decimals = true
+                                        endif
+                                      %}
                                         <div class="filter__group js-filter filter__group--price" data-index="{{ forloop.index }}" data-element="desktop">
                                             <h1 class="filter__group-title">{{ filter.label }}</h1>
                                             <price-range class="price-fields">
@@ -83,9 +90,13 @@
                                                     <input class="price-field__input" 
                                                         name="{{ filter.min_value.param_name }}" 
                                                         id="Filter-{{ filter.label | escape }}-GTE"
-                                                        {% if filter.min_value.value %}
-                                                            value="{{ filter.min_value.value | money_without_currency}}"
-                                                        {% endif %}
+                                                        {%- if filter.min_value.value -%}
+                                                            {%- if uses_comma_decimals -%}
+                                                                value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                            {%- else -%}
+                                                                value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% endif %}
+                                                        {%- endif -%}
                                                         type="number"
                                                         placeholder=0
                                                         min=0
@@ -98,9 +109,13 @@
                                                     <input class="price-field__input" 
                                                         name="{{ filter.max_value.param_name }}"
                                                         id="Filter-{{ filter.label | escape }}-LTE"
-                                                        {% if filter.max_value.value %}
-                                                            value="{{ filter.max_value.value | money_without_currency }}"
-                                                        {% endif %}
+                                                        {%- if filter.min_value.value -%}
+                                                            {%- if uses_comma_decimals -%}
+                                                                value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                            {%- else -%}
+                                                                value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                            {% endif %}
+                                                        {%- endif -%}
                                                         type="number"
                                                         placeholder="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
                                                         min="0"
@@ -117,7 +132,7 @@
                         </div>
                     </form>
                 </product-filters-form>
-                <header-drawer class="mobile-filters__wrapper" data-breakpoint="mobile" data-element="mobile">
+                <menu-drawer class="mobile-filters__wrapper" data-breakpoint="mobile" data-element="mobile">
                     <details class="mobile-filters__toggle" >
                         <summary>
                             <span class="mobile-filters__open">
@@ -284,7 +299,7 @@
                             </form>
                         </product-filters-form>
                     </details>
-                </header-drawer>
+                </menu-drawer>
             </div>
         {%- endif -%}
         <div id="ProductGrid" class="products-container">
@@ -368,7 +383,7 @@
 
                 {% endif %}
                 {% if paginate.pages > 1 %}
-                    {% render 'kendama-pagination', paginate: paginate %}
+                    {% render 'pagination', paginate: paginate %}
                 {% endif %}
             {% endpaginate %}
         </div>

@@ -1,0 +1,96 @@
+{{ 'component-product-box.css' | asset_url | stylesheet_tag }}
+
+<div class="product-box">
+    <product-box-slider>
+        {%- assign products = section.settings.featured_collection.products -%}
+        <div class="product-box__products-container">
+            <ul class="product-box__products slider">
+                    {%- if products.size > 0 -%}
+                        {%- for product in products -%}
+                            <li class="product-box__product">
+                                <a href="">
+                                    <img srcset="{%- if product.featured_image.width >= 165 -%}{{ product.featured_image | img_url: '165x' }} 165w,{%- endif -%}
+                                    {%- if product.featured_image.width >= 360 -%}{{ product.featured_image | img_url: '360x' }} 360w,{%- endif -%}
+                                    {%- if product.featured_image.width >= 535 -%}{{ product.featured_image | img_url: '535x' }} 535w,{%- endif -%}
+                                    {%- if product.featured_image.width >= 720 -%}{{ product.featured_image | img_url: '720x' }} 720w,{%- endif -%}
+                                    {%- if product.featured_image.width >= 940 -%}{{ product.featured_image | img_url: '940x' }} 940w,{%- endif -%}
+                                    {%- if product.featured_image.width >= 1070 -%}{{ product.featured_image | img_url: '1070x' }} 1070w{%- endif -%}" 
+                                    class="image contain" 
+                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                    src="{{ product.featured_image | img_url: 'master' }}" 
+                                    alt="{{ product.featured_image.alt }}"
+                                    loading="lazy"
+                                    width="{{ product.featured_image.width }}"
+                                    height="{{ product.featured_image.height }}"
+                                    >
+                                </a>
+                                <!-- <div class="product-box__product-overlay">
+
+                                </div> -->
+                            </li>
+                        {%- endfor -%}
+                    {%- else -%}
+                        <li class="product-box__product">
+                            {{ 'product-1' | placeholder_svg_tag: 'image contain' }}
+                        </li>
+                    {%- endif -%}
+                    {%- if products.size > 4 -%}
+                        <button class="arrow arrow-left" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">
+                            {% render 'icon-arrow' %}
+                        </button>
+                        <button class="arrow arrow-right" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">
+                            {% render 'icon-arrow' %}
+                        </button>
+                    {%- endif -%}     
+            </ul>
+        </div>
+        <div class="product-box__thumbnails-container">
+            <ul class="product-box__thumbnails slider">
+                {%- if products.size > 0 -%}
+                    {%- for product in products -%}
+                        <li class="product-box__thumbnail">
+                            <img srcset="{%- if product.featured_image.width >= 165 -%}{{ product.featured_image | img_url: '165x' }} 165w,{%- endif -%}
+                            {%- if product.featured_image.width >= 360 -%}{{ product.featured_image | img_url: '360x' }} 360w,{%- endif -%}
+                            {%- if product.featured_image.width >= 535 -%}{{ product.featured_image | img_url: '535x' }} 535w,{%- endif -%}
+                            {%- if product.featured_image.width >= 720 -%}{{ product.featured_image | img_url: '720x' }} 720w,{%- endif -%}
+                            {%- if product.featured_image.width >= 940 -%}{{ product.featured_image | img_url: '940x' }} 940w,{%- endif -%}
+                            {%- if product.featured_image.width >= 1070 -%}{{ product.featured_image | img_url: '1070x' }} 1070w{%- endif -%}" 
+                            class="image contain" 
+                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                            src="{{ product.featured_image | img_url: 'master' }}" 
+                            alt="{{ product.featured_image.alt }}"
+                            loading="lazy"
+                            width="{{ product.featured_image.width }}"
+                            height="{{ product.featured_image.height }}"
+                            >
+                        </li>
+                    {%- endfor -%}
+                {%- else -%}
+                    {%- for i in (1..4) -%}
+                        <li class="product-box__thumbnail">
+                            {{ 'product-1' | placeholder_svg_tag: 'image contain' }}
+                        </li>
+                    {%- endfor -%}
+                {%- endif -%}
+            </ul>
+        </div>
+    </product-box-slider>
+</div>
+
+{% schema %}
+{
+    "name": "Product box",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "featured_collection",
+            "label": "Featured collection"
+        }        
+    ],
+    "presets": [
+        {
+            "name": "Product box"
+        }
+    ]
+}
+{% endschema %}

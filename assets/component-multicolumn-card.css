@@ -15,8 +15,16 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1vw;
     }
+}
+
+@media only screen and (max-width: 540px) {
+    .multicolumn-card__container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
     
 }
+
 
 .card {
     padding: 1rem;

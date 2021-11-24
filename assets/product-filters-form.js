@@ -132,7 +132,7 @@ class ProductFiltersForm extends HTMLElement {
             document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
         });
         
-        document.getElementById('ProductFiltersFormMobile').closest('header-drawer').bindEvents(countsToRender);
+        document.getElementById('ProductFiltersFormMobile').closest('menu-drawer').bindEvents(countsToRender);
     }
 
     renderCounts(source, target) {

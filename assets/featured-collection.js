@@ -1,10 +1,6 @@
 class FeaturedCollection extends HTMLElement {
     constructor() {
         super();
-
-    }
-
-    connectedCallback() {
         this.scrollWrap = this.querySelector('.overflow-scroller');
         this.scrollWrap.scroll({
             left: 0,
@@ -15,10 +11,11 @@ class FeaturedCollection extends HTMLElement {
         this.amountToMove = 1;
         this.moveAmount = this.gridWidth * this.amountToMove;
 
-        this.arrowBtns.forEach(btn => btn.addEventListener('click', this.moveScroll.bind(this)))
+        this.arrowBtns.forEach(btn => btn.addEventListener('click', this.moveScroll.bind(this)));
     }
 
     moveScroll(event) {
+        console.log(event);
         let currentScroll = this.scrollWrap.scrollLeft;
 
         this.scrollWrap.scroll({

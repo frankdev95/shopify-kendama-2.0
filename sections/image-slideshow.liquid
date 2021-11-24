@@ -1,121 +1,121 @@
 {{ 'component-image-slideshow.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'image-slideshow.js' | asset_url }}" defer="defer"></script>
 
-<section class="margin-bottom-lg">
-    <image-slideshow>
-        <div class="image-slideshow">
-            <div class="image-slideshow__container">
-                <div class="image-slideshow__wrapper" aria-label="slideshow" aria-describedby="slideshow-info" data-slide-speed={{ section.settings.slide_speed }} data-indicator-amount={{ section.settings.max_indicators }}>
-                    {%- for block in section.blocks -%}
-                        {%- case block.type -%}
-                            {%- when 'slide' -%}
-                                {%- if block.settings.image -%}
-                                    <div class="slide image-slideshow__slide {% if forloop.index == 1 %}show{% endif %}" {% if forloop.index == 1 %} aria-hidden="false" {% endif %}>
-                                        <a class="image-slideshow__img-container" href="{{ block.settings.image_link }}">
-                                            <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
-                                                {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
-                                                src="{{ block.settings.collection.image | img_url: '553x' }}"
-                                                alt="{{ block.settings.collection.title | escape }}"
-                                                height="{{ block.settings.image.height }}"
-                                                width="{{ block.settings.image.width }}"
-                                                loading="lazy"
-                                                class="motion-reduce lazy-load"
-                                            >
-                                        </a>
-                                    </div>
-                                {%- elsif block.settings.image == blank -%}
-                                    <div class="slide image-slideshow__placeholder-slide{% if forloop.index == 1 %} show{%endif%} " data-index={{ forloop.index | minus: 1 }} {% if forloop.index == 1 %} aria-hidden="false" {% endif %}>
-                                        {{ 'collection-2' | placeholder_svg_tag: 'image__placeholder' }}
-                                    </div>
-                                {%- endif -%}
-                            {%- else -%}
-                        {%- endcase -%}
-                    {%- endfor -%}
-                </div>
-                {% style %}
-
-                .image-slideshow__indicators-wrapper,
-                .image-slideshow__player-wrapper {
-                    background-color: {{ section.settings.controls_background }};
-                }
-
-                .image-slideshow__indicator {
-                    background-color: {{ section.settings.controls_indicator_background }};
-                }
-
-                .control-btn,
-                .image-slideshow__indicators-wrapper .arrow {
-                    color: {{ section.settings.controls_indicator_background }};
-                }
-
-                .image-slideshow__indicator.active {
-                    background-color: {{ section.settings.controls_active_indicator }};
-                }
-
-                .image-slideshow__indicator:hover,
-                .image-slideshow__indicator:focus {
-                    border: 1px solid {{ section.settings.controls_active_indicator }};
-                }
-
-                .image-slideshow__indicators-wrapper .arrow:hover,
-                .image-slideshow__indicators-wrapper .arrow:focus,
-                .control-btn:hover,
-                .control-btn:focus  {
-                    color: {{ section.settings.controls_active_indicator }};
-                }
-
-                @media only screen and (max-width: 750px) {
-                    .image-slideshow__indicator.active {
-                        background-color: {{ section.settings.controls_active_indicator_mobile }};
-                    }
-
-                    .image-slideshow__indicator:hover,
-                    .image-slideshow__indicator:focus {
-                        border: 1px solid {{ section.settings.controls_active_indicator_mobile }};
-                    }
-
-                    .image-slideshow__indicators-wrapper .arrow:hover,
-                    .image-slideshow__indicators-wrapper .arrow:focus,
-                    .control-btn:hover,
-                    .control-btn:focus  {
-                        color: {{ section.settings.controls_active_indicator_mobile }};
-                    }
-
-                }
-
-                {% endstyle %}
-                {%- if section.blocks.size > 1 -%}
-                    <div class="image-slideshow__controls">
-                        <div class="image-slideshow__indicators-wrapper">
-                                <i class="arrow fas fa-chevron-left" role="button" data-name="previous"></i>
-                                <ul class="image-slideshow__indicators">
-                                    {%- for block in section.blocks -%}
-                                        <li class="image-slideshow__indicator {% if forloop.index == 1 %}active{% endif %}" data-index={{ forloop.index | minus: 1 }}></li>
-                                    {%- endfor -%}
-                                </ul>
-                                <i class="arrow fas fa-chevron-right" role="button" data-name="next" ></i>
-                        </div>
-                        <div class="image-slideshow__player-wrapper">
-                            <i class="play-btn control-btn fas fa-play hide" role="button" aria-label="play slideshow"></i>
-                            <i class="pause-btn control-btn fas fa-pause" role="button" aria-label="pause slideshow"></i>
-                        </div>
-                    </div>  
-                {%- endif -%}
-              
+<image-slideshow>
+    <div class="image-slideshow">
+        <div class="image-slideshow__container">
+            <div class="image-slideshow__wrapper" aria-label="slideshow" aria-describedby="slideshow-info" data-slide-speed={{ section.settings.slide_speed }} data-indicator-amount={{ section.settings.max_indicators }}>
+                {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                        {%- when 'slide' -%}
+                            {%- if block.settings.image -%}
+                                <div class="slide image-slideshow__slide {% if forloop.index == 1 %}show{% endif %}" {% if forloop.index == 1 %} aria-hidden="false" {% endif %}>
+                                    <a class="image-slideshow__img-container" href="{{ block.settings.image_link }}">
+                                        <img srcset="{%- if block.settings.collection.image.width >= 165 -%}{{ block.settings.collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                            {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                            src="{{ block.settings.collection.image | img_url: '553x' }}"
+                                            alt="{{ block.settings.collection.title | escape }}"
+                                            height="{{ block.settings.image.height }}"
+                                            width="{{ block.settings.image.width }}"
+                                            loading="lazy"
+                                            class="motion-reduce lazy-load"
+                                        >
+                                    </a>
+                                </div>
+                            {%- elsif block.settings.image == blank -%}
+                                <div class="slide placeholder image-slideshow__placeholder-slide{% if forloop.index == 1 %} show{%endif%} " data-index={{ forloop.index | minus: 1 }} {% if forloop.index == 1 %} aria-hidden="false" {% endif %}>
+                                    {{ 'collection-2' | placeholder_svg_tag: 'image__placeholder' }}
+                                </div>
+                            {%- endif -%}
+                        {%- else -%}
+                    {%- endcase -%}
+                {%- endfor -%}
             </div>
+            {% style %}
+
+            #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper,
+            .image-slideshow__player-wrapper {
+                background-color: {{ section.settings.controls_background }};
+            }
+
+            #shopify-section-{{ section.id }} .image-slideshow__indicator {
+                background-color: {{ section.settings.controls_indicator_background }};
+            }
+
+            #shopify-section-{{ section.id }} .control-btn,
+            #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper .arrow {
+                color: {{ section.settings.controls_indicator_background }};
+            }
+
+            #shopify-section-{{ section.id }} .image-slideshow__indicator.active {
+                background-color: {{ section.settings.controls_active_indicator }};
+            }
+
+            #shopify-section-{{ section.id }} .image-slideshow__indicator:hover,
+            #shopify-section-{{ section.id }} .image-slideshow__indicator:focus {
+                border: 1px solid {{ section.settings.controls_active_indicator }};
+            }
+
+            #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper .arrow:hover,
+            #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper .arrow:focus,
+            #shopify-section-{{ section.id }} .control-btn:hover,
+            #shopify-section-{{ section.id }} .control-btn:focus  {
+                color: {{ section.settings.controls_active_indicator }};
+            }
+
+            @media only screen and (max-width: 750px) {
+                #shopify-section-{{ section.id }} .image-slideshow__indicator.active {
+                    background-color: {{ section.settings.controls_active_indicator_mobile }};
+                }
+
+                #shopify-section-{{ section.id }} .image-slideshow__indicator:hover,
+                #shopify-section-{{ section.id }} .image-slideshow__indicator:focus {
+                    border: 1px solid {{ section.settings.controls_active_indicator_mobile }};
+                }
+
+                #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper .arrow:hover,
+                #shopify-section-{{ section.id }} .image-slideshow__indicators-wrapper .arrow:focus,
+                #shopify-section-{{ section.id }} .control-btn:hover,
+                #shopify-section-{{ section.id }} .control-btn:focus  {
+                    color: {{ section.settings.controls_active_indicator_mobile }};
+                }
+
+            }
+
+            {% endstyle %}
+            {%- if section.blocks.size > 1 -%}
+                <div class="image-slideshow__controls">
+                    <div class="image-slideshow__indicators-wrapper">
+                            <i class="arrow fas fa-chevron-left" role="button" data-name="previous"></i>
+                            <ul class="image-slideshow__indicators">
+                                {%- for block in section.blocks -%}
+                                    <li class="image-slideshow__indicator {% if forloop.index == 1 %}active{% endif %}" data-index={{ forloop.index | minus: 1 }}></li>
+                                {%- endfor -%}
+                            </ul>
+                            <i class="arrow fas fa-chevron-right" role="button" data-name="next" ></i>
+                    </div>
+                    <div class="image-slideshow__player-wrapper">
+                        <i class="play-btn control-btn fas fa-play hide" role="button" aria-label="play slideshow"></i>
+                        <i class="pause-btn control-btn fas fa-pause" role="button" aria-label="pause slideshow"></i>
+                    </div>
+                </div>  
+            {%- endif -%}
+            
         </div>
-    </image-slideshow>
-</section>
+    </div>
+</image-slideshow>
+
 
 {% schema %}
 {
     "name": "Image slideshow",
     "tag": "section",
+    "class": "space-section spaced-section--full-width",
     "settings": [
         {
             "type": "range",
@@ -137,6 +137,12 @@
             "max": 20,
             "step": 1,
             "default": 4
+        },
+        {
+            "type": "checkbox",
+            "id": "toggle_automation",
+            "label": "Toggle automation",
+            "info": "Control slideshow automation"
         },
         {
             "type": "color",

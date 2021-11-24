@@ -28,7 +28,6 @@
     justify-content: flex-end;
 }
 
-
 .image-with-text__image img {
     width: 100%;
     height: 100%;
@@ -59,15 +58,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.image-with-text__content h1 {
-    font-size: 10rem;
-    font-weight: bold;
-}
-
-.image-with-text__content p {
-    width: 80%;
 }
 
 .image-with-text__button {

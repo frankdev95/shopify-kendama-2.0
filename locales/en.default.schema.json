@@ -220,6 +220,9 @@
           },
           "options__2": {
             "label": "1600px"
+          },
+          "options__3": {
+            "label": "1800px"
           }
         }
       }
@@ -769,6 +772,56 @@
         }
       }
     },
+    "multimedia-gallery": {
+      "name": "Multimedia gallery",
+      "settings": {
+        "show_animation": {
+          "label": "Toggle animation"
+        },
+        "animation_type": {
+          "label": "Animation type",
+          "info": "Animation to play when elements enter view",
+          "options": {
+            "options__1": {
+              "label": "Fade in"
+            },
+            "options__2": {
+              "label": "Flip horizontal bottom"
+            },
+            "options__3": {
+              "label": "Flip in horizontal bottom"
+            },
+            "options__4": {
+              "label": "Flip horizontal top"
+            },
+            "options__5": {
+              "label": "Flip in vertical left"
+            },
+            "options__6": {
+              "label": "Puff in center"
+            },
+            "options__7": {
+              "label": "Rotate in center"
+            },
+            "options__8": {
+              "label": "Scale in center"
+            },
+            "options__9": {
+              "label": "Scale up center"
+            },
+            "options__10": {
+              "label": "Slide in elliptical top"
+            },
+            "options__11": {
+              "label": "Slide top"
+            }
+          }
+        },
+        "swipe_on_mobile": {
+          "label": "Swipe on mobile"
+        }
+      }
+    },
     "header": {
       "name": "Header",
       "settings": {
@@ -877,6 +930,9 @@
           "options__5": {
             "label": "Inverse"
           },
+          "options__6": {
+            "label": "Transparent"
+          },
           "label": "Color scheme",
           "info": "Used for text box."
         },
@@ -885,6 +941,9 @@
         },
         "stack_images_on_mobile": {
           "label": "Stack images on mobile"
+        },
+        "stack_text_on_mobile": {
+          "label": "Stack text on mobile"
         },
         "show_text_below": {
           "label": "Show text below images"
@@ -901,12 +960,24 @@
             "heading": {
               "label": "Heading"
             },
+            "italicize": {
+              "label": "Italicize text"
+            },
+            "bold": {
+              "label": "Bold text"
+            },
             "heading_size": {
               "options__1": {
-                "label": "Medium"
+                "label": "Small"
               },
               "options__2": {
+                "label": "Medium"
+              },
+              "options__3": {
                 "label": "Large"
+              },
+              "options__4": {
+                "label": "Extra Large"
               },
               "label": "Heading font size"
             }
@@ -933,6 +1004,9 @@
             "button_style_secondary_1": {
               "label": "Use outline button style"
             },
+            "button_style_tertiary_1": {
+              "label": "Use rounded button style"
+            },
             "button_label_2": {
               "label": "Second button label",
               "info": "Leave the label blank to hide the button."
@@ -942,6 +1016,9 @@
             },
             "button_style_secondary_2": {
               "label": "Use outline button style"
+            },
+            "button_style_tertiary_2": {
+              "label": "Use rounded button style"
             }
           }
         }

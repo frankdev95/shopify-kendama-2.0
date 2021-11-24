@@ -11,6 +11,7 @@
 
 .grid--4-columns .multicolumn-image__column {
   flex-basis: 25%;
+  max-width: 25%;
 }
 
 .multicolumn-image__column {
@@ -22,13 +23,14 @@
 
 .multicolumn-image__column:only-child {
   max-width: 72rem;
-}
-
-.multicolumn-image__column.center .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width), .multicolumn-image__column:only-child {
   margin: 0 auto;
 }
 
-.multicolumn-image__column.right .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width), .multicolumn-image__column:only-child {
+.multicolumn-image__column.center .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width) {
+  margin: 0 auto;
+}
+
+.multicolumn-image__column.right .multicolumn-image__image-wrapper:not(.multicolumn-image__image-wrapper--full-width) {
   margin-left: auto;
 }
 

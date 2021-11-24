@@ -1,6 +1,4 @@
 .product-box {
-  --border-width: 5px;
-
   background-color: #fff;
   position: absolute;
   width: max(30rem, 50%);
@@ -13,7 +11,6 @@
 }
 
 .product-box__top {
-  border: var(--border-width) solid var(--primary-red);
   width: 100%;
   height: 90%;
   position: relative;
@@ -50,9 +47,6 @@
 }
 
 .product-box__bottom {
-  border-bottom: var(--border-width) solid var(--primary-red);
-  /* border-left: calc(var(--border-width) / 2) solid var(--primary-red);
-  border-right: calc(var(--border-width) / 2) solid var(--primary-red); */
   display: flex;
   background-color: #fff;
   position: relative;
@@ -62,7 +56,6 @@
 
 .product-box__thumbnail {
   box-sizing: border-box;
-  border-left: var(--border-width) solid var(--primary-red);
   cursor: pointer;
   min-width: 25%;
   max-width: 25%;
@@ -90,22 +83,31 @@
   padding: 0 1.5rem;
 }
 
-.product-box__arrows .arrow {
+.product-box__top .arrow {
+  background-color: transparent;
+  outline: none;
+  border: none;
   position: absolute;
   cursor: pointer;
-  width: 3rem;
+  padding: 1.5rem;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
+  transition: background-color .1s ease-in;  
 }
 
-.product-box__arrows .arrow-left {
+
+.product-box__top .arrow svg {
+  width: 3rem;
+}
+
+.product-box__top .arrow-left {
   transform: translateY(-50%) rotate(180deg);
-  left: 1.5rem;
+  left: 0;
 }
 
-.product-box__arrows .arrow-right {
-  right: 1.5rem;
+.product-box__top .arrow-right {
+  right: 0;
 }
 
 .product-box__thumbnail.active::after {

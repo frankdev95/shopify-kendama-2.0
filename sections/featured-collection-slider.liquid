@@ -1,76 +1,122 @@
 {{ 'component-featured-collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'featured-collection.js' | asset_url }}" defer="defer"></script>
 {{ 'component-animated-banner.css' | asset_url | stylesheet_tag}}
+{{ 'modal.css' | asset_url | stylesheet_tag}}
 
 {% if section.settings.show_banner %}
-    <div class="margin-top-xl">
-        <animated-banner>
-            <div class="animated-banner__container">
-                <div class="animated-banner">
-                    <span>FEATURED PRODUCTS</span>
-                    <span>FEATURED PRODUCTS</span>
-                    <span>FEATURED PRODUCTS</span>
-                    <span>FEATURED PRODUCTS</span>
-                </div>
+    <animated-banner>
+        <div class="animated-banner__container">
+            <div class="animated-banner">
+                <span>FEATURED PRODUCTS</span>
+                <span>FEATURED PRODUCTS</span>
+                <span>FEATURED PRODUCTS</span>
+                <span>FEATURED PRODUCTS</span>
             </div>
-        </animated-banner>
-    </div>
+        </div>
+    </animated-banner>
 {% endif %}
 
-<section class="margin-vertical-lg">
-    <featured-collection>
-        <div class="overflow-scroll-wrap">
-            <button class="btn arrow--left"></button>
-            <button class="btn arrow--right"></button>
-            <div class="overflow-scroller" data-product-image__scatter="{{ section.settings.image_scatter }}" data-type__product__capitalize="{{ section.settings.capitalize }}">
-                <div class="overflow-scroller__container">
-                    {% assign featured_collection = collections[section.settings.featured_collection].products %}
-                    {% if featured_collection[0] %}
-                        {% for product in featured_collection %}
-                            <div class="overflow-scroller__product">
-                                <div class="overflow-scroller__product-content">
-                                    <a class="overflow-scroller__product-link" href="{{ product.url }}">
-                                        <div class="product-slider">
-                                            {% for image in product.images %}
-                                                <div class="product-slide">
-                                                    <img src="{{ image | img_url: 'large'}}" alt="">
-                                                </div>
-                                            {% endfor %}
+<featured-collection>
+    <h2 class="h1 center margin-bottom-lg">{{ section.settings.heading | escape }}</h2>
+    <div class="overflow-scroll-wrap">
+        <button class="btn arrow--left"></button>
+        <button class="btn arrow--right"></button>
+        <div class="overflow-scroller" data-product-image-scatter="{{ section.settings.image_scatter }}" data-type-product-capitalize="{{ section.settings.capitalize }}">
+            <div class="overflow-scroller__container">
+                {% assign featured_collection = collections[section.settings.featured_collection].products %}
+                {% if featured_collection[0] %}
+                    {% for product in featured_collection %}
+                        <div class="overflow-scroller__product">
+                            <div class="overflow-scroller__product-content">
+                                <modal-opener data-modal="#ProductInfoModal-{{ product.id }}" data-product={{ product.handle }}>
+                                    <button class="full-unstyled-link overflow-scroller__product-slider" aria-controls="ProductInfoModal-{{ product.id }}" aria-haspopup="dialog" aria-expanded="false">
+                                        <product-slider data-image-count="{{ product.images.size }}">
+                                            <div class="product-slider" >
+                                                {% for image in product.images %}
+                                                    <div class="product-slide">
+                                                        <img srcset="{%- if image.width >= 165 -%}{{ image | img_url: '165x' }} 165w,{%- endif -%}
+                                                            {%- if image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                                                            {%- if image.width >= 535 -%}{{ image | img_url: '535x' }} 535w,{%- endif -%}
+                                                            {%- if image.width >= 720 -%}{{ image | img_url: '720x' }} 720w,{%- endif -%}
+                                                            {%- if image.width >= 940 -%}{{ image | img_url: '940x' }} 940w,{%- endif -%}
+                                                            {%- if image.width >= 1440 -%}{{ image | img_url: '1440x' }} 1440w,{%- endif -%}
+                                                            {%- if image.width >= 1880 -%}{{ image | img_url: '1880x' }} 1880w{%- endif -%}"
+                                                            src="{{ image | img_url: '553x' }}" 
+                                                            alt="{{ product.title | escape }}"
+                                                            height="{{ image.height }}"
+                                                            width="{{ image.width }}"
+                                                            loading="lazy"
+                                                            class="image contain"
+                                                        >
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-amount"></div>
+                                            </div>
+                                        </product-slider>
+                                    </button>
+                                </modal-opener>
+                                <modal-dialog id="ProductInfoModal-{{ product.id }}" class="modal__container product-modal">
+                                    <div class="modal__content" role="dialog" aria-modal="true" tabindex="-1">
+                                        <button id="ModalClose-{{ block.id }}" type="button" class="modal__close" aria-label="close" aria-hidden="true">
+                                            {% render 'icon-close' %}
+                                        </button>
+                                        <div class="modal__backdrop"></div>
+                                        <div class="modal__outer">
+                                            <div class="product-modal__featured-image">
+                                                <img srcset="{%- if product.featured_media.width >= 165 -%}{{ product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 330 -%}{{ product.featured_media | img_url: '330x' }} 330w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 535 -%}{{ product.featured_media | img_url: '535x' }} 535w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 720 -%}{{ product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 940 -%}{{ product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 1440 -%}{{ product.featured_media | img_url: '1440x' }} 1440w,{%- endif -%}
+                                                    {%- if product.featured_media.width >= 1880 -%}{{ product.featured_media | img_url: '1880x' }} 1880w{%- endif -%}"
+                                                    src="{{ product.featured_media | img_url: '553x' }}" 
+                                                    alt="{{ product.title | escape }}"
+                                                    height="{{ product.featured_media.height }}"
+                                                    width="{{ product.featured_media.width }}"
+                                                    loading="lazy"
+                                                    class="image contain"
+                                                >
+                                            </div>
                                         </div>
-                                        <div class="grid-product__meta">
-                                            <div class="overflow-scroller__product-title">{{ product.title }}</div>
-                                            <div class="grid-product__price">{{ product.price | money_with_currency }}</div>
-                                        </div>
-                                    </a>
+                                    </div>
+                                </modal-dialog>
+                                <div class="product__meta">
+                                    <div class="overflow-scroller__product-title">{{ product.title }}</div>
+                                    <div class="overflow-scroll__product-price">{{ product.price | money_with_currency }}</div>
                                 </div>
                             </div>
-                        {% endfor %}
-                    
-                    {% else %}
-                        {% for i in (1..8) %}
-                            <div class="overflow-scroller__product">
-                                <div class="overflow-scroller__product-content">
-                                    <div class="product-slider">
-                                        <div class="product-slide"></div>
-                                        <div class="grid-product__meta">
-                                            <div class="grid-product__title">Product</div>
-                                            <div class="grid-product__price">£29.99</div>
-                                        </div>
+                        </div>
+                    {% endfor %}
+                
+                {% else %}
+                    {% for i in (1..8) %}
+                        <div class="overflow-scroller__product">
+                            <div class="overflow-scroller__product-content">
+                                <div class="product-slider">
+                                    <div class="product-slide">
+                                        {{ 'product-1' | placeholder_svg_tag: 'image cover placeholder' }}
+                                    </div>
+                                    <div class="grid-product__meta">
+                                        <div class="overflow-scroller__product-title">Product</div>
+                                        <div class="overflow-scroll__product-price">£29.99</div>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
-
         </div>
-    </featured-collection>
-</section>
+    </div>
+</featured-collection>
 
 {% schema %}
 {
     "name": "Featured collection",
+    "class": "spaced-section",
     "settings": [
         {
             "type": "text",

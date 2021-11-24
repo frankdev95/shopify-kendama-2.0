@@ -1,0 +1,115 @@
+.multicolumn-infographic__container {
+    --full-height: 40rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 1.5vw;
+}
+
+.multicolumn-infographic__container.grid-one {
+    grid-template-areas: 
+    "featured featured . . . ."
+    "featured featured . . . ."
+    "featured featured . . . .";
+}
+
+.multicolumn-infographic__container.grid-two {
+    grid-template-areas: 
+    ". . . . featured featured"
+    ". . . . featured featured"
+    ". . . . featured featured";
+}
+
+.multicolumn-infographic__container.grid-three {
+    grid-template-areas: 
+    "featured featured featured featured featured featured"
+    ". . . . . ."
+    ". . . . . .";
+    row-gap: 2vw;
+}
+
+.multicolumn-infographic__container.grid-three .multicolumn-infographic__item:first-child,
+.multicolumn-infographic__container.grid-four .multicolumn-infographic__item:first-child {
+    height: 50rem;
+}
+
+
+.multicolumn-infographic__container.grid-four {
+    grid-template-areas: 
+    ". . . . . ."
+    ". . . . . ."
+    "featured featured featured featured featured featured";
+    row-gap: 2vw;
+}
+
+
+.multicolumn-infographic__item:first-child {
+    grid-area: featured;
+    height: var(--full-height);
+}
+
+.multicolumn-infographic__item:not(:first-child) {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: calc(var(--full-height) / 3);
+    display: flex;
+    align-items: center;
+}
+
+.multicolumn-infographic__item:not(:first-child) img, 
+.multicolumn-infographic__item:not(:first-child) svg {
+    width: clamp(7rem, 20%, 11rem);
+    height: auto;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+
+@media only screen and (max-width: 749px) {
+    .multicolumn-infographic__container {
+        row-gap: 2rem;
+    }
+
+    .multicolumn-infographic__container:not(.grid-four) {
+        grid-template-areas: 
+        "featured featured featured featured featured featured"
+        ". . . . . ."
+        ". . . . . ."
+        ". . . . . .";
+    }
+
+    .multicolumn-infographic__container.grid-four {
+        grid-template-areas: 
+        ". . . . . ."
+        ". . . . . ."
+        ". . . . . ."
+        "featured featured featured featured featured featured";
+    }
+
+    
+    .multicolumn-infographic__item:first-child {
+        height: calc((var(--full-height) / 5) * 4)!important;
+    }
+
+
+    .multicolumn-infographic__item:not(:first-child) {
+       grid-column: span 3; 
+       height: auto;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .multicolumn-infographic__item:not(:first-child) img, 
+    .multicolumn-infographic__item:not(:first-child) svg {
+        width: clamp(5rem, 10vw, 7rem);
+    }
+
+    .multicolumn-infographic__item:not(:first-child) {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .multicolumn-infographic__item:not(:first-child) img, 
+    .multicolumn-infographic__item:not(:first-child) svg { 
+        margin-bottom: 1rem;
+    }
+}

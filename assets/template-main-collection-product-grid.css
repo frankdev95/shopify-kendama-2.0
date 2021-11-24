@@ -222,7 +222,7 @@ facet-remove:only-child {
     display: inline-block;
     color: currentColor;
     text-decoration: none;
-    border: 1px solid var(--primary-green);
+    border: 1px solid green;
     border-radius: 30px;
     font-size: 1.2rem;
     padding: .5rem 1.5rem;
@@ -260,7 +260,7 @@ facet-remove:only-child {
 }
 
 .mobile-filters__toggle {
-    border: 1px solid var(--primary-green);
+    border: 1px solid green;
 }
 
 .mobile-filters__toggle:not(.menu-opening) .mobile-filters__inner {
