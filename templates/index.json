@@ -1,17 +1,66 @@
 {
   "sections": {
+    "16358539128f0dbb60": {
+      "type": "image-slideshow",
+      "blocks": {
+        "16358539128f0dbb60-0": {
+          "type": "slide",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "4d5a4034-f269-46bb-a76d-9b8cdf2e21fa": {
+          "type": "slide",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "af9b4064-9139-4b2f-a996-fb5fd95d14d5": {
+          "type": "slide",
+          "settings": {
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16358539128f0dbb60-0",
+        "4d5a4034-f269-46bb-a76d-9b8cdf2e21fa",
+        "af9b4064-9139-4b2f-a996-fb5fd95d14d5"
+      ],
+      "settings": {
+        "slide_speed": 2,
+        "max_indicators": 4,
+        "controls_background": "#d11111",
+        "controls_indicator_background": "#1eb0ff",
+        "controls_active_indicator": "#bfced6",
+        "controls_active_indicator_mobile": "#628395"
+      }
+    },
     "image_slideshow": {
       "type": "image-slideshow",
       "settings": {
-        "desktop_text_box_position": "flex-end"
-      },
-      "blocks": {
-      },
-      "block_order": [
-      ]
+        "slide_speed": 2,
+        "max_indicators": 4,
+        "controls_background": "#000000",
+        "controls_indicator_background": "#628395",
+        "controls_active_indicator": "#628395",
+        "controls_active_indicator_mobile": "#628395"
+      }
+    },
+    "1635852227dd14b1d6": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading": "Feature Collection",
+        "featured_collection": "",
+        "image_scatter": false,
+        "capitalize": true,
+        "show_banner": true
+      }
     }
   },
   "order": [
-    "image_slideshow"
+    "16358539128f0dbb60",
+    "image_slideshow",
+    "1635852227dd14b1d6"
   ]
 }
