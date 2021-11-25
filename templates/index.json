@@ -58,11 +58,64 @@
         "capitalize": true,
         "show_banner": true
       }
+    },
+    "16378543840abf8907": {
+      "type": "image-with-text-product",
+      "blocks": {
+        "163785438416994e6a-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "italicize": false,
+            "capitalize": false,
+            "font_size": "small"
+          }
+        },
+        "163785438416994e6a-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_width": 80
+          }
+        },
+        "163785438416994e6a-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "163785438416994e6a-0",
+        "163785438416994e6a-1",
+        "163785438416994e6a-2"
+      ],
+      "settings": {
+        "image_width": 100,
+        "image_height": "square",
+        "image_shape": "rectangle",
+        "show_box_shadow": false,
+        "box_shadow_color": "#000",
+        "box_shadow_type": "one",
+        "bs_x_position": 50,
+        "bs_y_position": 10,
+        "image_align": "left",
+        "col_gap": 0,
+        "order": "image_first",
+        "show_product_box": true,
+        "box_alignment": "right",
+        "box_color": "#000000",
+        "toggle_automation": true,
+        "slide_speed": 2,
+        "featured_collection": "kendama-collection"
+      }
     }
   },
   "order": [
     "16358539128f0dbb60",
     "image_slideshow",
-    "1635852227dd14b1d6"
+    "1635852227dd14b1d6",
+    "16378543840abf8907"
   ]
 }
