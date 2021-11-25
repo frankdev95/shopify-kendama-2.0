@@ -1,0 +1,292 @@
+{%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+    <div class="collection-filters">
+        {%- assign total_active_values = 0 -%}
+        <product-filters-form class="products-filters-form">
+            <form id="ProductFiltersForm" class="filters__form">
+                <div class="filters__form--standard">
+                    {% if collection.current_vendor or collection.current_type %}
+                        <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
+                    {% endif %}
+                
+                    {%- if section.settings.enable_sorting -%}
+                        <div class="filter__group filter__group--sort-by">
+                            
+                            <h1 class="filter__group-title">{{ 'sections.collection_template.sort_by_label' | t }}</h1>
+                            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                            
+                            <div class="select">
+                                <select name="sort_by" id="sort_by">
+                                    {% for option in collection.sort_options %}
+                                        <option value="{{ option.value }}"{% if option.value == sort_by %} selected {% endif %}>{{ option.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                
+                            <noscript>
+                                <button type="submit" class="button button--small">{{ 'sections.collection_template.sort_button' | t }}</button>
+                                </noscript>
+                        </div>
+                    {%- endif -%}
+                    
+                    {% for filter in collection.filters %}
+                        {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+                        {% case filter.type %}
+                            {% when 'list' %}
+                                <div class="filter__group js-filter" data-index="{{ forloop.index }}" data-element="desktop">
+                                    <h1 class="filter__group-title">{{ filter.label }} <span class="selection-count">{%- if filter.active_values.size > 0 -%}{{ filter.active_values.size }}{%- endif -%}</span></h1>
+                                    <ul class="filter__list">
+                                        {% for value in filter.values %}
+                                            {% if value.param_name contains 'vendor' %}
+                                                {%- assign filter_type = 'vendor' -%}
+                                            {% elsif value.param_name contains 'product_type' %}
+                                                {%- assign filter_type = 'product' -%}
+                                            {% endif %}
+                                            <li class="filter__list-item">
+                                                <span>{{ value.label }} ({{ value.count }})</span>
+                                                <div class="filter__checkbox-container">
+                                                    <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="filter__checkbox {% if value.count == 0 and value.active == false%} filter__checkbox--disabled {%  endif %}{% if value.active == true %}active{% endif %}" 
+                                                        {% if value.count == 0 and value.active == false %}data-disabled="true"{% endif %}>
+                                                        <input type="checkbox" 
+                                                        id="Filter-{{ filter.label | escape}}-{{ forloop.index }}"
+                                                        class="filter__checkbox-input"
+                                                        name="{{ value.param_name }}" 
+                                                        value="{{ value.value }}" 
+                                                        data-type="{{ filter_type }}"
+                                                        {% if value.active %}checked{% endif %}
+                                                        {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                            
+                                </div>
+                                
+                            {% when 'price_range' %}
+                            {% liquid
+                                assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                                assign uses_comma_decimals = false
+                                if currencies_using_comma_decimals contains cart.currency.iso_code
+                                    assign uses_comma_decimals = true
+                                endif
+                                %}
+                                <div class="filter__group js-filter filter__group--price" data-index="{{ forloop.index }}" data-element="desktop">
+                                    <h1 class="filter__group-title">{{ filter.label }}</h1>
+                                    <price-range class="price-fields">
+                                        <div class="price-field">
+                                            <span class="price-field__currency">{{ cart.currency.symbol }}</span>
+                                            <input class="price-field__input" 
+                                                name="{{ filter.min_value.param_name }}" 
+                                                id="Filter-{{ filter.label | escape }}-GTE"
+                                                {%- if filter.min_value.value -%}
+                                                    {%- if uses_comma_decimals -%}
+                                                        value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                    {%- else -%}
+                                                        value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                    {% endif %}
+                                                {%- endif -%}
+                                                type="number"
+                                                placeholder=0
+                                                min=0
+                                                max="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                >
+                                        </div>
+                                        {% render 'icon-arrow' %}
+                                        <div class="price-field">
+                                            <span class="price-field__currency">{{ cart.currency.symbol }}</span>
+                                            <input class="price-field__input" 
+                                                name="{{ filter.max_value.param_name }}"
+                                                id="Filter-{{ filter.label | escape }}-LTE"
+                                                {%- if filter.min_value.value -%}
+                                                    {%- if uses_comma_decimals -%}
+                                                        value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                                                    {%- else -%}
+                                                        value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                    {% endif %}
+                                                {%- endif -%}
+                                                type="number"
+                                                placeholder="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                min="0"
+                                                max="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                >
+                                        </div>
+                                    </price-range>
+                                </div>
+                        {% endcase %}
+                    {% endfor %}
+                    <noscript>
+                        <button type="submit">{{ 'sections.collection_template.filter_button' | t }}</button>
+                    </noscript>
+                </div>
+            </form>
+        </product-filters-form>
+        <menu-drawer class="mobile-filters__wrapper" data-breakpoint="mobile" data-element="mobile">
+            <details class="mobile-filters__toggle" >
+                <summary>
+                    <span class="mobile-filters__open">
+                        {% render 'icon-filter' %}
+                        <span>{{ 'sections.collection_template.filter_and_sort' | t}}</span>
+                        <span>
+                            {%- if total_active_values -%} {{ total_active_values }}{%- endif -%}
+                        </span>
+                    </span>
+                    <span tabindex="0" class="mobile-filters__close mobile-filters__close--no-js">{% render 'icon-close' %}</span>
+                </summary>
+                <product-filters-form>
+                    <form id="ProductFiltersFormMobile" class="mobile-filters">
+                        <div class="mobile-filters__inner">
+                            <div class="mobile-filters__header">
+                                <div class="mobile-filters__header-inner">
+                                    <h2 class="mobile-filters__heading">{{ 'sections.collection_template.filter_and_sort' | t }}</h2>
+                                    <p class="mobile-filters__count">{{ 'sections.collection_template.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}</p>
+                                </div>
+                            </div>
+                            <div class="mobile-filters__main ">
+                                {%- for filter in collection.filters -%}
+                                    {% case filter.type %}
+                                        {% when 'list' %}
+                                            <details class="mobile-filters__details js-filter" data-index="mobile-{{ forloop.index}}">
+                                                <summary class="mobile-filters__summary" data-index="mobile-{{ forloop.index }}">
+                                                    <div>
+                                                        <span>{{ filter.label | escape }}</span>
+                                                        <span class="selection-count">
+                                                            {%- if filter.active_values.size > 0 -%} {{ filter.active_values.size }}{%- endif -%}
+                                                        </span>
+                                                        <span class="mobile-filters__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
+                                                        <noscript>{% render 'icon-caret' %}</noscript>
+                                                    </div>
+                                                </summary>
+                                                <div class="mobile-filters__submenu">
+                                                    <!-- <button class="mobile-filters__close-button">
+                                                        {% render 'icon-arrow' %}
+                                                        {{ filter.label | escape }}
+                                                    </button> -->
+                                                    <ul class="mobile-filters__list list-unstyled">
+                                                        {% for value in filter.values %}
+                                                            <li class="mobile-filters__item">
+                                                                <label for="Filter-{{ filter.label | escape}}-mobile-{{ forloop.index }}" class="mobile-filters__label {% if value-.count == 0 and value.active == false %}disabled{% endif %}"">
+                                                                    <input class="mobile-filters__checkbox" type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape}}-mobile-{{ forloop.index }}"
+                                                                        {% if value.active %}checked{% endif %}
+                                                                        {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                                                                    >
+            
+                                                                    <span class="mobile-filters__highlight"></span>
+            
+                                                                    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                                                        <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                                                    </svg>
+                                    
+                                                                    <svg class="icon icon-checkmark" width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                    
+                                                                    {{ value.label | escape}} ({{ value.count }})
+                                                                </label>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+<!--                     
+                                                    <div class="no-js-hidden mobile-filters__footer">
+                                                        <facet-remove>
+                                                            <a href="{{ collection.url }}" class="mobile-filters__clear button button--secondary">{{ 'sections.collection_template.clear' | t }}</a>
+                                                        </facet-remove>
+                                                        <button type="button" class="no-js-hidden button button--primary" onclick="this.closest('.mobile-filters__wrapper').querySelector('summary').click()">{{ 'sections.collection_template.apply' | t }}</button>
+                                                        <noscript><button class="button button--primary">{{ 'sections.collection_template.apply' | t }}</button></noscript>
+                                                    </div> -->
+                                                </div>
+                                            </details>
+                                            {% when 'price_range' %}
+                                                <details class="mobile-filters__details js-filter" data-index="mobile-{{ forloop.index }}">
+                                                    <summary class="mobile-filters__summary" data-index="mobile-{{ forloop.index }}">
+                                                        <div>
+                                                            <span>{{ filter.label | escape }}</span>
+                                                            <span class="selection-count {%- if filter.min_value.value or filter.max_value.value -%}{{ filter.active_values_size }}{%- endif -%} "></span>
+                                                            <span class="mobile-filters__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
+                                                            <noscript>{% render 'icon-caret' %}</noscript>
+                                                        </div>
+                                                    </summary>
+                                                    <div class="mobile-filters__submenu">
+                                                        <button class="mobile-filters__close-button">
+                                                            {% render 'icon-arrow' %}
+                                                            {{ filter.label | escape }}
+                                                        </button>
+                                                        
+                                                        {%- assign max_price_amount = filter.range_max | money | escape -%}                                            
+                                                        
+                                                        <p class="mobile-filters__info">{{ 'sections.collection_template.max_price' | t: price: max_price_amount }}</p>
+                                                        
+                                                        <price-range class="price-fields">
+                                                            <div class="price-field">
+                                                                <span class="price-field__currency">{{ cart.currency.symbol }}</span>
+                                                                <input class="price-field__input" 
+                                                                    name="{{ filter.min_value.param_name }}" 
+                                                                    id="Mobile-Filter-{{ filter.label | escape }}-GTE"
+                                                                    {% if filter.min_value.value %}
+                                                                        value="{{ filter.min_value.value | money_without_currency}}"
+                                                                    {% endif %}
+                                                                    type="number"
+                                                                    placeholder=0
+                                                                    min=0
+                                                                    max="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                                    >
+                                                            </div>
+                                                            {% render 'icon-arrow' %}
+                                                            <div class="price-field">
+                                                                <span class="price-field__currency">{{ cart.currency.symbol }}</span>
+                                                                <input class="price-field__input" 
+                                                                    name="{{ filter.max_value.param_name }}"
+                                                                    id="Mobile-Filter-{{ filter.label | escape }}-LTE"
+                                                                    {% if filter.max_value.value %}
+                                                                        value="{{ filter.max_value.value | money_without_currency }}"
+                                                                    {% endif %}
+                                                                    type="number"
+                                                                    placeholder="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                                    min="0"
+                                                                    max="{{ filter.range_max | money_without_currency | replace: ',', ''}}"
+                                                                    >
+                                                            </div>
+                                                        </price-range>
+                                                    </div>
+                                                </details>
+                                        {% else %}
+                                    {% endcase %}
+                                {% endfor %}
+                                {%- if section.settings.enable_sorting -%}
+                                    <div class="mobile-filters__details js-filter" data-index="mobile-{{ forloop.index }}">
+                                        <div class="mobile-filters__summary" data-index="mobile-{{ forloop.index }}">
+                                            <div class="mobile-filters__sort">
+                                                <label for="SortBy-mobile">{{ 'sections.collection_template.sort_by_label' | t }}</label>
+                                                <div class="select">
+                                                    <select name="sort_by" class="select__select" id="SortBy-mobile" aria-describedby="a11y-refresh-page-message">
+                                                        {%- for option in collection.sort_options -%}
+                                                            <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                                                        {%- endfor -%}
+                                                        </select>
+                                                        {% render 'icon-caret' %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%- endif -%}
+            
+                                <div class="mobile-filters__footer">
+                                    <facet-remove>
+                                        <a href="{{ collection.url }}" class="mobile-filters__clear button button--secondary">{{ 'sections.collection_template.clear' | t }}</a>
+                                    </facet-remove>
+                                    <button type="button" class="no-js-hidden button button--primary" onclick="this.closest('.mobile-filters__wrapper').querySelector('summary').click()">{{ 'sections.collection_template.apply' | t }}</button>
+                                    <noscript><button class="button button--primary">{{ 'sections.collection_template.apply' | t }}</button></noscript>
+                                </div>
+                                
+                                {% if collection.current_vendor or collection.current_type %}
+                                    <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
+                                {% endif %}
+            
+                            </div>
+                        </div>
+                        
+                    </form>
+                </product-filters-form>
+            </details>
+        </menu-drawer>
+    </div>
+{% endif %}
