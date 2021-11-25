@@ -103,12 +103,115 @@
         "image_align": "left",
         "col_gap": 0,
         "order": "image_first",
-        "show_product_box": true,
+        "show_product_box": false,
         "box_alignment": "right",
         "box_color": "#000000",
         "toggle_automation": true,
-        "slide_speed": 2,
+        "slide_speed": 0.5,
         "featured_collection": "kendama-collection"
+      }
+    },
+    "16378545181a83fdac": {
+      "type": "gallery",
+      "blocks": {
+        "1637854518ab64412a-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/camilla-carvalho-JPTuOFurQrs-unsplash.jpg",
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": true,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-1": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-2": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-3": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-4": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-5": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "1637854518ab64412a-6": {
+          "type": "image",
+          "settings": {
+            "show_modal": true,
+            "object_fit": "cover",
+            "show_caption": false,
+            "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
+          }
+        },
+        "46d91267-50bc-404f-9570-d69855c2fdec": {
+          "type": "video",
+          "settings": {
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": "Describe the video for customers using screen readers"
+          }
+        }
+      },
+      "block_order": [
+        "1637854518ab64412a-0",
+        "1637854518ab64412a-1",
+        "1637854518ab64412a-2",
+        "1637854518ab64412a-3",
+        "1637854518ab64412a-4",
+        "1637854518ab64412a-5",
+        "1637854518ab64412a-6",
+        "46d91267-50bc-404f-9570-d69855c2fdec"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "subheading": "Sub Heading",
+        "header_alignment": "center",
+        "layout": "col-4",
+        "grid_gap": 0,
+        "full_width": true,
+        "image_height": "square",
+        "text_color": "#fff",
+        "background_color": "#889EAF",
+        "opacity": 0.8,
+        "swipe_on_mobile": false,
+        "toggle_animation": true,
+        "animation_type": "fade-in",
+        "animation_length": 0.5,
+        "animation_delay": 0.2
       }
     }
   },
@@ -116,6 +219,7 @@
     "16358539128f0dbb60",
     "image_slideshow",
     "1635852227dd14b1d6",
-    "16378543840abf8907"
+    "16378543840abf8907",
+    "16378545181a83fdac"
   ]
 }
