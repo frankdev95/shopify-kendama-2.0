@@ -252,15 +252,17 @@
         "1637854518ab64412a-0": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
             "show_modal": true,
             "object_fit": "cover",
-            "show_caption": true,
+            "show_caption": false,
             "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
           }
         },
         "1637854518ab64412a-1": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/bf_nb.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
@@ -270,6 +272,7 @@
         "1637854518ab64412a-2": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_40.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
@@ -279,6 +282,7 @@
         "1637854518ab64412a-3": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/bf_banner_web.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
@@ -288,6 +292,7 @@
         "1637854518ab64412a-4": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
@@ -297,6 +302,7 @@
         "1637854518ab64412a-5": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/swts_20.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
@@ -306,6 +312,7 @@
         "1637854518ab64412a-6": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/business-pug-working-on-laptop.jpg",
             "show_modal": true,
             "object_fit": "cover",
             "show_caption": false,
