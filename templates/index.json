@@ -163,6 +163,7 @@
         "163785438416994e6a-2"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg",
         "image_width": 100,
         "image_height": "square",
         "image_shape": "rectangle",
@@ -174,12 +175,12 @@
         "image_align": "left",
         "col_gap": 0,
         "order": "image_first",
-        "show_product_box": false,
+        "show_product_box": true,
         "box_alignment": "right",
         "box_color": "#000000",
         "toggle_automation": true,
-        "slide_speed": 0.5,
-        "featured_collection": "kendama-collection"
+        "slide_speed": 2,
+        "featured_collection": "da-o-kendama-collection-kendama-london"
       }
     },
     "1635852227dd14b1d6": {
