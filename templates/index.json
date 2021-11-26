@@ -40,16 +40,6 @@
         "controls_active_indicator_mobile": "#616364"
       }
     },
-    "163793197448da6828": {
-      "type": "cta-banner",
-      "settings": {
-        "title": "Save money with kenkredits",
-        "image_size": 50,
-        "margin_vertical": 20,
-        "background": "#ba2b20",
-        "text_color": "#fff"
-      }
-    },
     "16379304447dd9eb37": {
       "type": "slideshow-carousel",
       "blocks": {
@@ -149,6 +139,7 @@
             "heading": "New",
             "italicize": true,
             "capitalize": true,
+            "bolden": false,
             "font_size": "large"
           }
         },
@@ -202,6 +193,7 @@
             "heading": "SALE",
             "italicize": true,
             "capitalize": true,
+            "bolden": false,
             "font_size": "large"
           }
         },
@@ -312,7 +304,6 @@
       "type": "image-banner",
       "settings": {
         "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
-        "image_2": "shopify:\/\/shop_images\/business-pug-working-on-laptop.jpg",
         "desktop_text_box_position": "center",
         "text_color": "#ffffff",
         "color_scheme": "background-1",
@@ -422,7 +413,7 @@
         "full_width": true,
         "image_height": "square",
         "text_color": "#0e0e0e",
-        "background_color": "#fff",
+        "background_color": "#ffffff",
         "opacity": 0.8,
         "swipe_on_mobile": true,
         "toggle_animation": true,
@@ -434,7 +425,6 @@
   },
   "order": [
     "16358539128f0dbb60",
-    "163793197448da6828",
     "16379304447dd9eb37",
     "16378543840abf8907",
     "1637931067a91547af",
