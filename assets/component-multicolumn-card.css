@@ -58,10 +58,14 @@
 
 .card__image-container {
     transform: translateY(50%);
-    border-radius: 50%;
+    
     width: var(--image-size);
     height: var(--image-size);
     margin: 0 auto;
+}
+
+.card__image-container img {
+    border-radius: 50%;
 }
 
 .card__image {
@@ -69,4 +73,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media only screen and (max-width: 750px) {
+    .card__image-container {
+        width: 12rem;
+        height: 12rem;
+    }
+    
 }
