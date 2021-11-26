@@ -46,6 +46,7 @@
         "1637930444cb77d787-0": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/dao-blk.png",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
@@ -55,6 +56,7 @@
         "1637930444cb77d787-1": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/2020_gt_bna.jpg",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
