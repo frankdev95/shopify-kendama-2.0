@@ -255,7 +255,7 @@
             "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
             "show_modal": true,
             "object_fit": "cover",
-            "show_caption": false,
+            "show_caption": true,
             "text": "<p>Add a caption to an image to explain and ellaborate on your choosen image.<\/p>"
           }
         },
@@ -322,6 +322,7 @@
         "46d91267-50bc-404f-9570-d69855c2fdec": {
           "type": "video",
           "settings": {
+            "cover_image": "shopify:\/\/shop_images\/gt_banner_21.jpg",
             "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "description": "Describe the video for customers using screen readers"
           }
@@ -345,8 +346,8 @@
         "grid_gap": 0,
         "full_width": true,
         "image_height": "square",
-        "text_color": "#ffffff",
-        "background_color": "#889eaf",
+        "text_color": "#0e0e0e",
+        "background_color": "#fff",
         "opacity": 0.8,
         "swipe_on_mobile": true,
         "toggle_animation": true,
