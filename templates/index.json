@@ -40,6 +40,16 @@
         "controls_active_indicator_mobile": "#616364"
       }
     },
+    "163793197448da6828": {
+      "type": "cta-banner",
+      "settings": {
+        "title": "Save money with kenkredits",
+        "image_size": 50,
+        "margin_vertical": 20,
+        "background": "#ba2b20",
+        "text_color": "#fff"
+      }
+    },
     "16379304447dd9eb37": {
       "type": "slideshow-carousel",
       "blocks": {
@@ -246,6 +256,29 @@
         "show_banner": true
       }
     },
+    "163793207531a1bf46": {
+      "type": "cta-banner",
+      "settings": {
+        "title": "Growing our kendama garden",
+        "image_size": 50,
+        "margin_vertical": 0,
+        "background": "#0e0e0e",
+        "text_color": "#fff"
+      }
+    },
+    "16379321012248d5de": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
+        "image_2": "shopify:\/\/shop_images\/business-pug-working-on-laptop.jpg",
+        "desktop_text_box_position": "center",
+        "text_color": "#ffffff",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "stack_text_on_mobile": false,
+        "adapt_height_first_image": false
+      }
+    },
     "16378545181a83fdac": {
       "type": "gallery",
       "blocks": {
@@ -343,7 +376,7 @@
         "subheading": "Sub Heading",
         "header_alignment": "center",
         "layout": "col-4",
-        "grid_gap": 0,
+        "grid_gap": 25,
         "full_width": true,
         "image_height": "square",
         "text_color": "#0e0e0e",
@@ -359,10 +392,13 @@
   },
   "order": [
     "16358539128f0dbb60",
+    "163793197448da6828",
     "16379304447dd9eb37",
     "16378543840abf8907",
     "1637931067a91547af",
     "1635852227dd14b1d6",
+    "163793207531a1bf46",
+    "16379321012248d5de",
     "16378545181a83fdac"
   ]
 }
