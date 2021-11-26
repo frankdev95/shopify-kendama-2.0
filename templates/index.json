@@ -54,7 +54,7 @@
       "settings": {
         "heading": "Feature Collection",
         "featured_collection": "da-o-kendama-collection-kendama-london",
-        "image_scatter": false,
+        "image_scatter": true,
         "capitalize": true,
         "show_banner": true
       }
