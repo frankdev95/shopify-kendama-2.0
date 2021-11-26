@@ -40,6 +40,89 @@
         "controls_active_indicator_mobile": "#616364"
       }
     },
+    "16379304447dd9eb37": {
+      "type": "slideshow-carousel",
+      "blocks": {
+        "1637930444cb77d787-0": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-1": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-2": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-3": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-4": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-5": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "1637930444cb77d787-6": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "object_fit": "cover",
+            "heading": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "1637930444cb77d787-0",
+        "1637930444cb77d787-1",
+        "1637930444cb77d787-2",
+        "1637930444cb77d787-3",
+        "1637930444cb77d787-4",
+        "1637930444cb77d787-5",
+        "1637930444cb77d787-6"
+      ],
+      "settings": {
+        "heading": "Kendama Brands",
+        "image_ratio": "adapt",
+        "is_automated": true,
+        "slide_speed": 3
+      }
+    },
     "16378543840abf8907": {
       "type": "image-with-text-product",
       "blocks": {
@@ -207,6 +290,7 @@
   },
   "order": [
     "16358539128f0dbb60",
+    "16379304447dd9eb37",
     "16378543840abf8907",
     "1635852227dd14b1d6",
     "16378545181a83fdac"
