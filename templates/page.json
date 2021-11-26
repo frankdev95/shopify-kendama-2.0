@@ -119,11 +119,80 @@
         "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",
         "swipe_on_mobile": true
       }
+    },
+    "1637937307abe85f08": {
+      "type": "multicolumn-infographic",
+      "blocks": {
+        "163793730779e1a5e5-0": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-1": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-2": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-3": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-4": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-5": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "163793730779e1a5e5-0",
+        "163793730779e1a5e5-1",
+        "163793730779e1a5e5-2",
+        "163793730779e1a5e5-3",
+        "163793730779e1a5e5-4",
+        "163793730779e1a5e5-5"
+      ],
+      "settings": {
+        "heading": "Enter heading",
+        "description": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, qui? Cupiditate fugiat itaque quo commodi, laboriosam placeat earum neque nesciunt autem, fuga alias suscipit non! Reprehenderit earum non eveniet, dolores sunt accusamus modi, officia nisi tempora ducimus alias, consectetur quas voluptatum odio aperiam fugit ullam eligendi vitae nemo vel. Placeat aliquid voluptas quasi accusamus voluptate eveniet ducimus rerum non, error asperiores nulla quas soluta a doloremque autem in sunt laborum aliquam optio eius est.<\/p>",
+        "text_align": "left",
+        "layout": "grid-one",
+        "object_fit": "cover"
+      }
     }
   },
   "order": [
     "main",
     "16379326131090f6eb",
-    "1637936898bc12df9c"
+    "1637936898bc12df9c",
+    "1637937307abe85f08"
   ]
 }
