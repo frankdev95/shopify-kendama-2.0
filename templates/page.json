@@ -183,8 +183,9 @@
       "settings": {
         "heading": "Enter heading",
         "description": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, qui? Cupiditate fugiat itaque quo commodi, laboriosam placeat earum neque nesciunt autem, fuga alias suscipit non! Reprehenderit earum non eveniet, dolores sunt accusamus modi, officia nisi tempora ducimus alias, consectetur quas voluptatum odio aperiam fugit ullam eligendi vitae nemo vel. Placeat aliquid voluptas quasi accusamus voluptate eveniet ducimus rerum non, error asperiores nulla quas soluta a doloremque autem in sunt laborum aliquam optio eius est.<\/p>",
-        "text_align": "left",
+        "text_align": "center",
         "layout": "grid-one",
+        "image": "shopify:\/\/shop_images\/business-pug-working-on-laptop.jpg",
         "object_fit": "cover"
       }
     }

@@ -2,12 +2,77 @@
   "sections": {
     "main": {
       "type": "main-product",
+      "blocks": {
+        "a7cd800f-10c7-4208-ad6c-e9e9e1d71fc5": {
+          "type": "text",
+          "settings": {
+            "text": "Text block",
+            "text_style": "body"
+          }
+        },
+        "266d2bce-4637-4947-9a35-662f9a89f9bb": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "4e11cfc0-6ad0-4802-96ef-0e7d4a2bd3f3": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "f29d2e49-1e55-49d0-8392-b616424c1435": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "8dd4d41f-98fc-471f-b31b-dc4f4da89d4c": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "f374b615-093a-4cf7-aa03-c22e6488164c": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "697e0cea-e371-4ea4-a0de-807207884008": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "df87f87b-d9ac-42a6-a493-1914d2f39db5": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "a7cd800f-10c7-4208-ad6c-e9e9e1d71fc5",
+        "266d2bce-4637-4947-9a35-662f9a89f9bb",
+        "4e11cfc0-6ad0-4802-96ef-0e7d4a2bd3f3",
+        "f29d2e49-1e55-49d0-8392-b616424c1435",
+        "8dd4d41f-98fc-471f-b31b-dc4f4da89d4c",
+        "f374b615-093a-4cf7-aa03-c22e6488164c",
+        "697e0cea-e371-4ea4-a0de-807207884008",
+        "df87f87b-d9ac-42a6-a493-1914d2f39db5"
+      ],
       "settings": {
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false
       }
     },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
       }
     }
   },
