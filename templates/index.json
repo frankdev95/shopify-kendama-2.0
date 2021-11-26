@@ -76,6 +76,7 @@
         "1637930444cb77d787-3": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Terra-Logo-1000x1000.png",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
@@ -85,6 +86,7 @@
         "1637930444cb77d787-4": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/just-merkaba-BLACK.png",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
