@@ -78,7 +78,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Terra-Logo-1000x1000.png",
             "image_link": "",
-            "object_fit": "cover",
+            "object_fit": "contain",
             "heading": "",
             "text": ""
           }
@@ -88,7 +88,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/just-merkaba-BLACK.png",
             "image_link": "",
-            "object_fit": "cover",
+            "object_fit": "contain",
             "heading": "",
             "text": ""
           }
@@ -98,7 +98,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Krom_Product_Logo.JPG",
             "image_link": "",
-            "object_fit": "cover",
+            "object_fit": "contain",
             "heading": "",
             "text": ""
           }
@@ -125,7 +125,7 @@
       ],
       "settings": {
         "heading": "Kendama Brands",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "is_automated": true,
         "slide_speed": 3
       }
@@ -168,12 +168,12 @@
         "image_width": 90,
         "image_height": "square",
         "image_shape": "rectangle",
-        "show_box_shadow": false,
+        "show_box_shadow": true,
         "box_shadow_color": "#000000",
         "box_shadow_type": "one",
-        "bs_x_position": 50,
+        "bs_x_position": 15,
         "bs_y_position": 10,
-        "image_align": "left",
+        "image_align": "center",
         "col_gap": 0,
         "order": "image_first",
         "show_product_box": true,
