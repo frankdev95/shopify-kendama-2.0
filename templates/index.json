@@ -189,10 +189,10 @@
         "16379310677372edeb-0": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "italicize": false,
-            "capitalize": false,
-            "font_size": "small"
+            "heading": "SALE",
+            "italicize": true,
+            "capitalize": true,
+            "font_size": "large"
           }
         },
         "16379310677372edeb-1": {
