@@ -48,7 +48,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/dao-blk.png",
             "image_link": "",
-            "object_fit": "cover",
+            "object_fit": "contain",
             "heading": "",
             "text": ""
           }
@@ -106,7 +106,7 @@
         "1637930444cb77d787-6": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/resized_isr_sigh.png",
+            "image": "shopify:\/\/shop_images\/Resize_Krom_Banner.jpg",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
