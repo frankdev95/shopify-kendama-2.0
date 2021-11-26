@@ -221,7 +221,7 @@
         "image_height": "square",
         "image_shape": "rectangle",
         "show_box_shadow": false,
-        "box_shadow_color": "#000",
+        "box_shadow_color": "#000000",
         "box_shadow_type": "one",
         "bs_x_position": 50,
         "bs_y_position": 10,
@@ -233,7 +233,7 @@
         "box_color": "#000000",
         "toggle_automation": true,
         "slide_speed": 2,
-        "featured_collection": ""
+        "featured_collection": "kendama"
       }
     },
     "1635852227dd14b1d6": {
