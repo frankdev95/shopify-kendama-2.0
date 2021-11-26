@@ -1,4 +1,12 @@
-.collection-hero {
+.collection__hero {
+  margin-bottom: 2rem;
+}
+
+.collection-hero__image-container {
+  height: 20rem;
+}
+
+/* .collection-hero {
   margin-bottom: 2rem;
 }
 
@@ -100,4 +108,4 @@
     margin-left: 3rem;
     min-height: 20rem;
   }
-}
+} */

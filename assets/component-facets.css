@@ -841,11 +841,11 @@
   .product-count {
     align-self: center;
     position: relative;
-    text-align: right;
+    text-align: left;
   }
   
   .product-count__text {
-    font-size: 1.4rem;
+    font-size: 2rem;
     line-height: calc(1 + 0.5 / var(--font-body-scale));
     margin: 0;
   }

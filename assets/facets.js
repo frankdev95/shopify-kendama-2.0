@@ -41,15 +41,8 @@ class FacetFiltersForm extends HTMLElement {
         );
         document
             .getElementById("ProductGridContainer")
-            .querySelector(".collection")
+            .querySelector(".collection-products")
             .classList.add("loading");
-
-        if (countContainer) {
-            countContainer.classList.add("loading");
-        }
-        if (countContainerDesktop) {
-            countContainerDesktop.classList.add("loading");
-        }
 
         sections.forEach((section) => {
             const url = `${window.location.pathname}?section_id=${section.section}&${searchParams}`;
@@ -180,7 +173,7 @@ class FacetFiltersForm extends HTMLElement {
     static renderCounts(source, target) {
         const targetElement = target.querySelector(".facets__selected");
         const sourceElement = source.querySelector(".facets__selected");
-        
+
         if (sourceElement && targetElement) {
             target.querySelector(".facets__selected").outerHTML =
                 source.querySelector(".facets__selected").outerHTML;

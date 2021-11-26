@@ -1,6 +1,7 @@
 {{ 'template-main-collection-product-grid.css' | asset_url | stylesheet_tag}}
 {{ 'snippet-product-item.css' | asset_url | stylesheet_tag}}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <!-- <script src="{{ 'product-filters-form.js' | asset_url}}" defer="defer"></script> -->
@@ -10,19 +11,28 @@
 <div class="collection page-width">
     {% if section.settings.enable_filtering or section.settings.enable_sorting %}
 
-            
-    {%-liquid 
-        if collection.url
-            assign results_url = collection.url
-        else
-            assign terms = collection.terms | escape
-            assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
-        endif
-    -%}
-        {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-        <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+        {%-liquid 
+            if collection.url
+                assign results_url = collection.url
+            else
+                assign terms = collection.terms | escape
+                assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+            endif
+        -%}
+            {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+            <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 
-        {% render 'facets', results: collection, results_url: results_url, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices, filters_background: section.settings.filters_background %}
+            {% render 'facets', results: collection, 
+                results_url: results_url, 
+                enable_filtering: section.settings.enable_filtering, 
+                enable_sorting: section.settings.enable_sorting, 
+                collapse_on_larger_devices: section.settings.collapse_on_larger_devices, 
+                filters_background: section.settings.filters_background,
+                filters_text: section.settings.filters_text_color,
+                checkbox_outline: section.settings.checkbox_outline,
+                checkbox_fill: section.settings.checkbox_fill,
+                capitalize_headings: section.settings.capitalize_headings,
+                show_selection_count: section.settings.show_selection_count %}
 
     {% endif %}
     <div id="ProductGridContainer" class="products-container">
@@ -83,16 +93,17 @@
                     </div>
             </div>
             {% else %}
-            <div class="collection collection-products">
+            <div class="collection-products">
                 <div class="loading-overlay gradient">
-                    <!-- <div class="loading-overlay__spinner">
+                    <div class="loading-overlay__spinner">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                             <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                             </svg>
-                    </div> -->
+                    </div>
                 </div>
-                
-               
+                {% if section.settings.show_collection_banner %}
+                   {% render 'collection-banner' %}
+                {% endif %}
                 <div class="product-count light" role="status">
                     <h2 class="product-count__text text-body">
                     <span id="ProductCount">
@@ -105,17 +116,27 @@
                         {%- endif -%}
                     </span>
                     </h2>
-                    <div class="loading-overlay__spinner">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                    </svg>
-                    </div>
                 </div>          
                 <div id="product-grid" data-id="{{ section.id }}" class="product-grid">
+                    {%- liquid 
+                        assign highest_ratio = 0
+                        for product in collection.products
+                            if product.featured_media.aspect_ratio > highest_ratio
+                                assign highest_ratio = product.featured_media.aspect_ratio
+                            endif
+                        endfor
+                    %}
                     {% for product in collection.products %}
-                        <div>
+                        <div class="collection__product">
+                            
                             {% render 'product-item',
-                                product: product 
+                                product_card_product: product,
+                                media_size: section.settings.image_ratio,
+                                highest_ratio: highest_ratio,
+                                show_images_on_hover: section.settings.show_images_on_hover,
+                                show_vendor: section.settings.show_vendor,
+                                show_rating: section.settings.show_rating
+                                show_buy_buttons: section.settings.show_buy_buttons
                             %}
                         </div>
                 {% endfor %}
@@ -147,6 +168,12 @@
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
     {
+        "type": "checkbox",
+        "id": "show_collection_banner",
+        "label": "Show collection banner",
+        "default": true
+    },
+    {
         "type": "header",
         "content": "FILTERS STYLING"
     },
@@ -155,6 +182,36 @@
         "id": "filters_background",
         "label": "Background color",
         "default": "#4cd3a1"
+    },
+    {
+        "type": "color",
+        "id": "filters_text_color",
+        "label": "Text color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "checkbox_outline",
+        "label": "Checkbox outline",
+        "default": "#FFF"
+    },
+    {
+        "type": "color",
+        "id": "checkbox_fill",
+        "label": "Checkbox fill",
+        "default": "#FFF"
+    },
+    {
+        "type": "checkbox",
+        "id": "capitalize_headings",
+        "label": "Capitalize headings",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "show_selection_count",
+        "label": "Show selection count",
+        "default": true
     },
     {
       "type": "header",
@@ -182,9 +239,9 @@
     },
     {
       "type": "checkbox",
-      "id": "show_secondary_image",
+      "id": "show_images_on_hover",
       "default": false,
-      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+      "label": "Show images on hover"
     },
     {
       "type": "checkbox",
@@ -210,6 +267,12 @@
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
       "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+        "type": "checkbox",
+        "id": "show_buy_buttons",
+        "label": "Show buy buttons",
+        "default": true
     },
     {
       "type": "header",
