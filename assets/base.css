@@ -209,10 +209,6 @@ html.no-js .no-js-hidden {
   margin-bottom: var(--section-spacing);
 }
 
-.spaced-section--full-width + .spaced-section--full-width {
-  margin-top: 0;
-}
-
 .spaced-section--full-width:first-child {
   margin-top: 0;
 }

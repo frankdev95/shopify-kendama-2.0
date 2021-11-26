@@ -556,10 +556,6 @@ class ProductBoxSlider extends SliderComponent {
     this.currentSlide = 0;
     this.thumbnailSliderItems[0].classList.add('active');
 
-    for(let i = 0; i < this.thumbnailSliderItems.length; i++) {
-      this.thumbnailSliderItems[i].addEventListener('click', this.thumbnailClickHandler.bind(this));
-    }
-
     const resizeObserver = new ResizeObserver(entires => this.initThumbnails());
     resizeObserver.observe(this.thumbnailSlider);
   }
