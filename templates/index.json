@@ -256,6 +256,58 @@
         "show_banner": true
       }
     },
+    "1637932270da44b508": {
+      "type": "multicolumn-image-with-text",
+      "blocks": {
+        "163793227013baf566-0": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "",
+            "image": "shopify:\/\/shop_images\/Kendama_Assets-01.png",
+            "image_size": 60,
+            "image_link": "",
+            "object_fit": "cover"
+          }
+        },
+        "163793227013baf566-1": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "",
+            "image": "shopify:\/\/shop_images\/Kendama_Assets-02.png",
+            "image_size": 60,
+            "image_link": "",
+            "object_fit": "cover"
+          }
+        },
+        "163793227013baf566-2": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "",
+            "image": "shopify:\/\/shop_images\/Kendama_Assets-03.png",
+            "image_size": 60,
+            "image_link": "",
+            "object_fit": "cover"
+          }
+        }
+      },
+      "block_order": [
+        "163793227013baf566-0",
+        "163793227013baf566-1",
+        "163793227013baf566-2"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "subheading": "Sub Heading",
+        "header_alignment": "center",
+        "swipe_on_mobile": true,
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left"
+      }
+    },
     "163793207531a1bf46": {
       "type": "cta-banner",
       "settings": {
@@ -373,10 +425,10 @@
       ],
       "settings": {
         "heading": "FOLLOW US ON INSTAGRAM",
-        "subheading": "Sub Heading",
+        "subheading": "for more kendama antics",
         "header_alignment": "center",
         "layout": "col-4",
-        "grid_gap": 25,
+        "grid_gap": 0,
         "full_width": true,
         "image_height": "square",
         "text_color": "#0e0e0e",
@@ -397,6 +449,7 @@
     "16378543840abf8907",
     "1637931067a91547af",
     "1635852227dd14b1d6",
+    "1637932270da44b508",
     "163793207531a1bf46",
     "16379321012248d5de",
     "16378545181a83fdac"
