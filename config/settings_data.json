@@ -9,6 +9,15 @@
     "colors_background_2": "#F3F3F3",
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
+    "social_twitter_link": "ds",
+    "social_facebook_link": "ds",
+    "social_pinterest_link": "ds",
+    "social_instagram_link": "ds",
+    "social_tiktok_link": "ds",
+    "social_tumblr_link": "ds",
+    "social_snapchat_link": "ds",
+    "social_youtube_link": "dsds",
+    "social_vimeo_link": "ds",
     "sections": {
       "header": {
         "type": "header",
@@ -44,7 +53,7 @@
         ],
         "settings": {
           "color_scheme": "inverse",
-          "newsletter_enable": true,
+          "newsletter_enable": false,
           "newsletter_heading": "Subscribe to our emails",
           "show_social": true,
           "enable_country_selector": true,
