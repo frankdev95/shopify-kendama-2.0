@@ -4,12 +4,23 @@
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 8,
+        "show_collection_banner": true,
+        "filters_background": "#4cd3a1",
+        "filters_text_color": "#000",
+        "checkbox_outline": "#FFF",
+        "checkbox_fill": "#FFF",
+        "capitalize_headings": true,
+        "show_selection_count": false,
         "image_ratio": "adapt",
-        "show_secondary_image": true,
+        "show_images_on_hover": false,
         "add_image_padding": true,
+        "show_image_outline": true,
         "show_vendor": true,
+        "show_rating": false,
+        "show_buy_buttons": true,
         "enable_filtering": true,
-        "enable_sorting": true
+        "enable_sorting": true,
+        "collapse_on_larger_devices": false
       }
     }
   },
