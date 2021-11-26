@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div class="gallery margin-vertical-xxl">
+<div class="gallery">
     <div class="{% if section.settings.full_width == false %} page-width{%endif%}">
         {% if section.settings.heading or section.settings.subheading %}
             <div class="section__heading margin-bottom-lg {{ section.settings.header_alignment }}">
@@ -44,6 +44,10 @@
                     #shopify-section-{{ section.id }} .gallery__figure button.modal__toggle-no-fig {
                         background: rgba({{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }}, 0.3);
                     }
+
+                    #shopify-section-{{ section.id }} .gallery__video-content {
+                        color: {{ section.settings.background_color }};
+                    }
                     
                     
                 {% endstyle %}
@@ -75,7 +79,6 @@
                                             {{ 'image' | placeholder_svg_tag: 'image placeholder' }}
                                         {% endif %}
                                     </div>
-                                    
                                     {% if block.settings.text != blank and block.settings.show_caption != false %}
                                         <figcaption class="gallery__figcaption hover-disable{% if block.settings.show_modal %} gallery__figcaption--modal {% endif %}" {% if block.settings.show_overlay == false %} aria-hidden="true" {% endif %}>
                                             {{ block.settings.text }}
@@ -211,6 +214,7 @@
 {% schema %}
 {
     "name": "t:sections.multimedia-gallery.name",
+    "class": "spaced-section spaced-section--full-width",
     "settings" : [
         {
             "type": "text",

@@ -224,6 +224,21 @@
           "options__3": {
             "label": "1800px"
           }
+        },
+        "section-spacing": {
+          "label": "Spacing between sections",
+          "options__1": {
+            "label": "Small (50px)"
+          },
+          "options__2": {
+            "label": "Medium (75px)"
+          },
+          "options__3": {
+            "label": "Large (100px)"
+          },
+          "options__4": {
+            "label": "Extra-large (125px)"
+          }
         }
       }
     }

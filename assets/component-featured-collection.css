@@ -160,3 +160,11 @@
 .overflow-scroller[data-type-product-capitalize="true"] .grid-product__title {
     text-transform: uppercase;
 }
+
+.featured-collection-slider .btn svg {
+    width: 1.5rem;
+}
+
+.featured-collection-slider .btn.arrow--left svg {
+    transform: scaleX(-1);
+}

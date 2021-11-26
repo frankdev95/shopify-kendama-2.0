@@ -202,11 +202,11 @@ html.no-js .no-js-hidden {
 }
 
 .spaced-section {
-  margin-top: 5rem;
+  margin-top: var(--section-spacing);
 }
 
 .spaced-section:last-child {
-  margin-bottom: 5rem;
+  margin-bottom: var(--section-spacing);
 }
 
 .spaced-section--full-width + .spaced-section--full-width {

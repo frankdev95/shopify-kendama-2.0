@@ -19,8 +19,8 @@
 <featured-collection>
     <h2 class="h1 center margin-bottom-lg">{{ section.settings.heading | escape }}</h2>
     <div class="overflow-scroll-wrap">
-        <button class="btn arrow--left"></button>
-        <button class="btn arrow--right"></button>
+        <button class="btn arrow--left">{% render 'icon-arrow-2'%}</button>
+        <button class="btn arrow--right">{% render 'icon-arrow-2'%}</button>
         <div class="overflow-scroller" data-product-image-scatter="{{ section.settings.image_scatter }}" data-type-product-capitalize="{{ section.settings.capitalize }}">
             <div class="overflow-scroller__container">
                 {% assign featured_collection = collections[section.settings.featured_collection].products %}
@@ -96,7 +96,7 @@
                         <div class="overflow-scroller__product">
                             <div class="overflow-scroller__product-content">
                                 <div class="product-slider">
-                                    <div class="product-slide">
+                                    <div class="product-slide-placeholder">
                                         {{ 'product-1' | placeholder_svg_tag: 'image cover placeholder' }}
                                     </div>
                                     <div class="grid-product__meta">
@@ -116,7 +116,7 @@
 {% schema %}
 {
     "name": "Featured collection",
-    "class": "spaced-section",
+    "class": "spaced-section featured-collection-slider",
     "settings": [
         {
             "type": "text",
