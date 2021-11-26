@@ -197,7 +197,7 @@
         "text_color": "#ffffff",
         "background_color": "#889eaf",
         "opacity": 0.8,
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "toggle_animation": true,
         "animation_type": "fade-in",
         "animation_length": 0.5,
