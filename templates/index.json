@@ -139,7 +139,7 @@
             "heading": "New",
             "italicize": true,
             "capitalize": true,
-            "bolden": false,
+            "bolden": true,
             "font_size": "large"
           }
         },
@@ -193,7 +193,7 @@
             "heading": "SALE",
             "italicize": true,
             "capitalize": true,
-            "bolden": false,
+            "bolden": true,
             "font_size": "large"
           }
         },
