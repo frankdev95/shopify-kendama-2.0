@@ -177,10 +177,63 @@
         "order": "image_first",
         "show_product_box": true,
         "box_alignment": "right",
-        "box_color": "#000000",
+        "box_color": "#ba2b20",
         "toggle_automation": true,
         "slide_speed": 2,
         "featured_collection": "da-o-kendama-collection-kendama-london"
+      }
+    },
+    "1637931067a91547af": {
+      "type": "image-with-text-product",
+      "blocks": {
+        "16379310677372edeb-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "italicize": false,
+            "capitalize": false,
+            "font_size": "small"
+          }
+        },
+        "16379310677372edeb-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_width": 80
+          }
+        },
+        "16379310677372edeb-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16379310677372edeb-0",
+        "16379310677372edeb-1",
+        "16379310677372edeb-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
+        "image_width": 90,
+        "image_height": "square",
+        "image_shape": "rectangle",
+        "show_box_shadow": false,
+        "box_shadow_color": "#000",
+        "box_shadow_type": "one",
+        "bs_x_position": 50,
+        "bs_y_position": 10,
+        "image_align": "left",
+        "col_gap": 0,
+        "order": "text_first",
+        "show_product_box": true,
+        "box_alignment": "right",
+        "box_color": "#000000",
+        "toggle_automation": true,
+        "slide_speed": 2,
+        "featured_collection": ""
       }
     },
     "1635852227dd14b1d6": {
@@ -300,6 +353,7 @@
     "16358539128f0dbb60",
     "16379304447dd9eb37",
     "16378543840abf8907",
+    "1637931067a91547af",
     "1635852227dd14b1d6",
     "16378545181a83fdac"
   ]
