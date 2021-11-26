@@ -136,10 +136,10 @@
         "163785438416994e6a-0": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "italicize": false,
-            "capitalize": false,
-            "font_size": "small"
+            "heading": "New",
+            "italicize": true,
+            "capitalize": true,
+            "font_size": "large"
           }
         },
         "163785438416994e6a-1": {
