@@ -266,7 +266,7 @@
             "text": "",
             "image": "shopify:\/\/shop_images\/Kendama_Assets-01.png",
             "image_size": 60,
-            "image_link": "",
+            "image_link": "shopify:\/\/collections\/grain-theory",
             "object_fit": "cover"
           }
         },
@@ -299,23 +299,13 @@
         "163793227013baf566-2"
       ],
       "settings": {
-        "heading": "Heading",
-        "subheading": "Sub Heading",
+        "heading": "Collection",
+        "subheading": "",
         "header_alignment": "center",
         "swipe_on_mobile": true,
         "image_width": "full",
         "image_ratio": "adapt",
         "column_alignment": "left"
-      }
-    },
-    "163793207531a1bf46": {
-      "type": "cta-banner",
-      "settings": {
-        "title": "Growing our kendama garden",
-        "image_size": 50,
-        "margin_vertical": 0,
-        "background": "#0e0e0e",
-        "text_color": "#fff"
       }
     },
     "16379321012248d5de": {
@@ -450,7 +440,6 @@
     "1637931067a91547af",
     "1635852227dd14b1d6",
     "1637932270da44b508",
-    "163793207531a1bf46",
     "16379321012248d5de",
     "16378545181a83fdac"
   ]
