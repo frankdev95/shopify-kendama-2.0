@@ -66,6 +66,7 @@
         "1637930444cb77d787-2": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/logo_button.jpg",
             "image_link": "",
             "object_fit": "cover",
             "heading": "",
@@ -120,7 +121,7 @@
       ],
       "settings": {
         "heading": "Kendama Brands",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "is_automated": true,
         "slide_speed": 3
       }
