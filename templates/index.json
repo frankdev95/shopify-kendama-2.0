@@ -42,6 +42,7 @@
     },
     "16379304447dd9eb37": {
       "type": "slideshow-carousel",
+      "disabled": true,
       "blocks": {
         "1637930444cb77d787-0": {
           "type": "slide",
