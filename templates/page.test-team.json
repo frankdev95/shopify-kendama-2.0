@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_title": false,
+        "show_content": false
+      }
+    },
+    "16379326131090f6eb": {
+      "type": "image-with-text-product",
+      "blocks": {
+        "163793261354410634-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Story of kendama london",
+            "italicize": false,
+            "capitalize": true,
+            "bolden": true,
+            "font_size": "medium"
+          }
+        },
+        "163793261354410634-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_width": 80
+          }
+        }
+      },
+      "block_order": [
+        "163793261354410634-0",
+        "163793261354410634-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
+        "image_width": 80,
+        "image_height": "portrait",
+        "image_shape": "rectangle",
+        "show_box_shadow": true,
+        "box_shadow_color": "#4cd3a1",
+        "box_shadow_type": "one",
+        "bs_x_position": 50,
+        "bs_y_position": 50,
+        "image_align": "right",
+        "col_gap": 0,
+        "order": "image_first",
+        "show_product_box": false,
+        "box_alignment": "right",
+        "box_color": "#000000",
+        "toggle_automation": true,
+        "slide_speed": 2,
+        "featured_collection": ""
+      }
+    },
+    "1637936898bc12df9c": {
+      "type": "multicolumn-card",
+      "blocks": {
+        "16379368985755c265-0": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "image": "shopify:\/\/shop_images\/close-up-portrait-of-young-man.jpg",
+            "background": "#ba2b20"
+          }
+        },
+        "16379368985755c265-1": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "background": "#fff"
+          }
+        },
+        "16379368985755c265-2": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "background": "#fff"
+          }
+        },
+        "0f774b96-3bb6-4bda-a16a-0bf31ddd7c97": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "background": "#fff"
+          }
+        },
+        "30faf592-fd13-4fe3-9411-b69e54d2e718": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "background": "#fff"
+          }
+        },
+        "87c3407a-0a3d-4b40-94db-ab4c8357314e": {
+          "type": "card",
+          "settings": {
+            "heading": "Name",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+            "background": "#fff"
+          }
+        }
+      },
+      "block_order": [
+        "16379368985755c265-0",
+        "16379368985755c265-1",
+        "16379368985755c265-2",
+        "0f774b96-3bb6-4bda-a16a-0bf31ddd7c97",
+        "30faf592-fd13-4fe3-9411-b69e54d2e718",
+        "87c3407a-0a3d-4b40-94db-ab4c8357314e"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",
+        "swipe_on_mobile": true
+      }
+    },
+    "1637937307abe85f08": {
+      "type": "multicolumn-infographic",
+      "blocks": {
+        "163793730779e1a5e5-0": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-1": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-2": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-3": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-4": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        },
+        "163793730779e1a5e5-5": {
+          "type": "item",
+          "settings": {
+            "object_fit": "cover",
+            "heading": "Enter heading",
+            "description": "<p>Lorem, ipsum dolor.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "163793730779e1a5e5-0",
+        "163793730779e1a5e5-1",
+        "163793730779e1a5e5-2",
+        "163793730779e1a5e5-3",
+        "163793730779e1a5e5-4",
+        "163793730779e1a5e5-5"
+      ],
+      "settings": {
+        "heading": "Enter heading",
+        "description": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, qui? Cupiditate fugiat itaque quo commodi, laboriosam placeat earum neque nesciunt autem, fuga alias suscipit non! Reprehenderit earum non eveniet, dolores sunt accusamus modi, officia nisi tempora ducimus alias, consectetur quas voluptatum odio aperiam fugit ullam eligendi vitae nemo vel. Placeat aliquid voluptas quasi accusamus voluptate eveniet ducimus rerum non, error asperiores nulla quas soluta a doloremque autem in sunt laborum aliquam optio eius est.<\/p>",
+        "text_align": "center",
+        "layout": "grid-one",
+        "image": "shopify:\/\/shop_images\/business-pug-working-on-laptop.jpg",
+        "object_fit": "cover"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16379326131090f6eb",
+    "1637936898bc12df9c",
+    "1637937307abe85f08"
+  ]
+}
