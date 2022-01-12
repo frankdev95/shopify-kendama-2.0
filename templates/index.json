@@ -244,13 +244,14 @@
       "settings": {
         "heading": "",
         "featured_collection": "bamboo-dj",
-        "image_scatter": true,
+        "image_scatter": false,
         "capitalize": true,
         "show_banner": true
       }
     },
     "1637932270da44b508": {
       "type": "multicolumn-image-with-text",
+      "disabled": true,
       "blocks": {
         "163793227013baf566-0": {
           "type": "column",
@@ -301,20 +302,9 @@
         "column_alignment": "left"
       }
     },
-    "16379321012248d5de": {
-      "type": "image-banner",
-      "settings": {
-        "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
-        "desktop_text_box_position": "center",
-        "text_color": "#ffffff",
-        "color_scheme": "background-1",
-        "stack_images_on_mobile": true,
-        "stack_text_on_mobile": false,
-        "adapt_height_first_image": false
-      }
-    },
     "16378545181a83fdac": {
       "type": "gallery",
+      "disabled": true,
       "blocks": {
         "1637854518ab64412a-0": {
           "type": "image",
@@ -422,6 +412,18 @@
         "animation_length": 0.5,
         "animation_delay": 0.2
       }
+    },
+    "16379321012248d5de": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/woman-wades-in-ocean-at-sunset.jpg",
+        "desktop_text_box_position": "center",
+        "text_color": "#ffffff",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "stack_text_on_mobile": false,
+        "adapt_height_first_image": false
+      }
     }
   },
   "order": [
@@ -431,7 +433,7 @@
     "1637931067a91547af",
     "1635852227dd14b1d6",
     "1637932270da44b508",
-    "16379321012248d5de",
-    "16378545181a83fdac"
+    "16378545181a83fdac",
+    "16379321012248d5de"
   ]
 }
